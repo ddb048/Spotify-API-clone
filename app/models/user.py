@@ -13,6 +13,9 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    marketable = db.Column(db.Boolean)
+    birthdate = db.Column(db.DateTime, nullable=False)
+    gender = db.Column(db.String(50), nullable=False)
 
     @property
     def password(self):
@@ -29,5 +32,8 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'marketable': self.marketable,
+            'birthdate': self.birthdate,
+            'gender': self.gender
         }
