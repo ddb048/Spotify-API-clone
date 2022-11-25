@@ -16,15 +16,16 @@ class Track(db.Model):
     genres = db.relationship('Genre', back_populates = 'tracks')
     artists = db.relationship('Artist', back_populates = 'tracks')
     albums = db.relationship('Album', back_populates = 'tracks')
-    # messages = db.relationship('Message', back_populates = 'channels', cascade="all,delete")
+    likes = db.relationship('Like', back_populates = 'tracks', cascade = 'all, delete')
+    playlists = db.relationship('Playlist_track', back_populates='tracks', cascade= 'all, delete')
 
     def to_dict(self):
         return {
             'id': self.id,
             'name': self.name,
             'duration': self.duration,
-            'genre_id': self.genre_id,
-            'artist_id':self.artist_id,
-            'album_id': self.album_id,
-            # 'messages': [message.mess_to_dict() for message in self.messages]
+            'genre': self.genres.to_dict(),
+            'artist': self.artists.to_dict(),
+            'album': self.albums.to_dict(),
+            'likes': [like.to_dict() for like in self.likes]
         }
