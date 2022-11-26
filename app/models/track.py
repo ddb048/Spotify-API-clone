@@ -6,9 +6,9 @@ class Track(db.Model):
     __tablename__ = 'tracks'
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
-    id = db.Column(db.Integer, primary_key = True)
-    name = db.Column(db.String, nullable = False)
-    duration = db.Column(db.Integer, nullabe=False)
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String, nullable=False)
+    duration = db.Column(db.Integer, nullable=False)
     genre_id = db.Column(db.Integer, ForeignKey(add_prefix_for_prod("genres.id")))
     artist_id = db.Column(db.Integer, ForeignKey(add_prefix_for_prod("artists.id")))
     album_id = db.Column(db.Integer, ForeignKey(add_prefix_for_prod("albums.id")))
