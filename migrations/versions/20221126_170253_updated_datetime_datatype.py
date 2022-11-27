@@ -1,8 +1,8 @@
-"""created models
+"""updated datetime datatype
 
-Revision ID: 370a41351e26
+Revision ID: eb5ff77e6994
 Revises: 
-Create Date: 2022-11-24 16:27:46.115651
+Create Date: 2022-11-26 17:02:53.763927
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '370a41351e26'
+revision = 'eb5ff77e6994'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -69,7 +69,6 @@ def upgrade():
     )
     op.create_table('follows',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('name', sa.String(), nullable=False),
     sa.Column('artist_id', sa.Integer(), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
@@ -82,6 +81,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(), nullable=False),
     sa.Column('duration', sa.Integer(), nullable=False),
+    sa.Column('source', sa.String(), nullable=False),
     sa.Column('genre_id', sa.Integer(), nullable=True),
     sa.Column('artist_id', sa.Integer(), nullable=True),
     sa.Column('album_id', sa.Integer(), nullable=True),
@@ -92,7 +92,6 @@ def upgrade():
     )
     op.create_table('likes',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('name', sa.String(), nullable=False),
     sa.Column('track_id', sa.Integer(), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),

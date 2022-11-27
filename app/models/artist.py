@@ -14,6 +14,7 @@ class Artist(db.Model):
  #relationship
     genres = db.relationship('Genre', back_populates = 'artists')
     albums = db.relationship('Album', back_populates = 'artists', cascade='all, delete')
+    tracks = db.relationship('Track', back_populates = 'artists', cascade='all, delete')
     follows = db.relationship('Follow', back_populates = 'artists', cascade = 'all, delete')
 
     def to_dict(self):
@@ -24,5 +25,6 @@ class Artist(db.Model):
             'description': self.description,
             'genre': self.genres.to_dict(),
             'albums': [album.to_dict() for album in self.albums],
+            'tracks': [track.to_dict() for track in self.tracks],
             'follows': [follow.to_dict() for follow in self.follows]
         }

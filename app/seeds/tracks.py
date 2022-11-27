@@ -107,11 +107,11 @@ def seed_tracks():
         artist_id=3)
     #14
     track14 = Track(
-        name="All Night",
-        duration=381,
-        source="https://amplifybuckey.s3.us-west-2.amazonaws.com/mp3/beyonce/lemonade/Beyonc%C3%A9+-+All+Night+(Video).mp3",
+        name="Daddy Lessons",
+        duration=288,
+        source="https://amplifybuckey.s3.us-west-2.amazonaws.com/mp3/beyonce/lemonade/Daddy+Lessons.mp3",
         album_id=7,
-        genre_id=7,
+        genre_id=10,
         artist_id=3)
     #15
     track15 = Track(
@@ -163,9 +163,9 @@ def seed_tracks():
         artist_id=4)
     #21
     track21 = Track(
-        name="Who",
-        duration=187,
-        source="https://amplifybuckey.s3.us-west-2.amazonaws.com/mp3/muna/saves+the+world/MUNA+-+Who+(Official+Visual).mp3",
+        name="Taken",
+        duration=242,
+        source="https://amplifybuckey.s3.us-west-2.amazonaws.com/mp3/muna/saves+the+world/MUNA+-+Taken+(Official+Video).mp3",
         album_id=21,
         genre_id=9,
         artist_id=4)
@@ -275,9 +275,9 @@ def seed_tracks():
         artist_id=6)
     #35
     track35 = Track(
-        name="We Are The Champions",
-        duration=186,
-        source="https://amplifybuckey.s3.us-west-2.amazonaws.com/mp3/queen/Queen_We_Are_The_Champions.mp3",
+        name="Death On Two Legs",
+        duration=223,
+        source="https://amplifybuckey.s3.us-west-2.amazonaws.com/mp3/queen/Queen+-+Death+on+two+legs+(dedicated+to......)+(1975).mp3",
         album_id=10,
         genre_id=1,
         artist_id=6)
@@ -307,9 +307,9 @@ def seed_tracks():
         artist_id=7)
     #39
     track39 = Track(
-        name="Efecto",
-        duration=223,
-        source="https://amplifybuckey.s3.us-west-2.amazonaws.com/mp3/bad+bunny/Un+Verano+Sin+Ti+2022/Efecto.mp3",
+        name="Callaita",
+        duration=250,
+        source="https://amplifybuckey.s3.us-west-2.amazonaws.com/mp3/bad+bunny/Un+Verano+Sin+Ti+2022/Callaita.mp3",
         album_id=11,
         genre_id=6,
         artist_id=7)

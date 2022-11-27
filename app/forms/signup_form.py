@@ -33,7 +33,7 @@ class SignUpForm(FlaskForm):
         'username', validators=[DataRequired(), username_exists])
     email = StringField('email', validators=[DataRequired(), user_exists])
     password = StringField('password', validators=[DataRequired()])
-    birthdate = DateField('birthate', format="%d-%m-%Y", validators=[DataRequired(), validate_birthdate])
+    birthdate = DateField('birthate', format='%Y-%m-%d', validators=[DataRequired(), validate_birthdate])
     marketable = BooleanField("marketable", validators=[DataRequired()])
     gender = SelectField(
         "gender", choices=["Male", "Female", "Non-binary", "Other", "Prefer not to say"], validators=[DataRequired()])
