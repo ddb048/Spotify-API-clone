@@ -36,7 +36,7 @@ def seed_artists():
             name='Queen',
             genre_id=1,
             artist_pic='https://amplifybuckey.s3.us-west-2.amazonaws.com/mp3/queen/Queen+arist-photo.png',
-            description="Few bands embodied the fearless creativity and attitude of 1970s rock like Queen. Embracing the exaggerated pomp of prog rock and heavy metal and the quaintness of vaudevillian music hall in equal measure, the British quartet colored their complex arrangements with camp and bombast, creating a huge, mock-operatic sound layered with guitars and overdubbed vocals.")
+            description="Few bands embodied the fearless creativity and attitude of 1970s rock like Queen.")
     # 7
     artist7 = Artist(
             name='Bad Bunny',
@@ -48,7 +48,7 @@ def seed_artists():
             name='Ludwig van Beethoven',
             genre_id=8,
             artist_pic='https://amplifybuckey.s3.us-west-2.amazonaws.com/mp3/beethoven/Ludwig_van_Beethoven.png',
-            description="The events of Beethoven's life are the stuff of Romantic legend, evoking images of the solitary creator shaking his fist at Fate and finally overcoming it through a supreme effort of creative will. His compositions, which frequently pushed the boundaries of tradition and startled audiences with their originality and power, are considered by many to be the foundation of 19th century musical principals.")
+            description="The events of Beethoven's life are the stuff of Romantic legend, evoking images of the solitary creator shaking his fist at Fate and finally overcoming it through a supreme effort of creative will.")
     # 9
     artist9 = Artist(
             name='Chappell Roan',
