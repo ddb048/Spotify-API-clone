@@ -6,31 +6,51 @@ from app.aws import (
 
 track_routes = Blueprint("tracks", __name__)
 
+# SECTION - Get all tracks /api/tracks/
+@track_routes.route('/')
+def get_all_tracks():
+    tracks = Track.query.all()
+    return {'tracks': [track.to_dict() for track in tracks]}
 
-@track_routes.route("", methods=["POST"])
-@login_required
-def upload_track():
-    if "track" not in request.files:
-        return {"errors": "track required"}, 400
 
-    track = request.files["track"]
 
-    if not allowed_file(track.filename):
-        return {"errors": "file type not permitted"}, 400
+# SECTION - Get track by ID /api/tracks/:trackId
+@track_routes.route('/<int:trackId')
+def get_one_track(trackId):
+    track = Track.query.get(int(trackId))
+    if track:
+        return track.to_dict(), 200
+    else:
+        return {
+            'errors': 'track not found',
+            'Status Code': 404
+        }, 404
 
-    track.filename = get_unique_filename(track.filename)
 
-    upload = upload_file_to_s3(track)
+# @track_routes.route("", methods=["POST"])
+# @login_required
+# def upload_track():
+#     if "track" not in request.files:
+#         return {"errors": "track required"}, 400
 
-    if "url" not in upload:
-        # if the dictionary doesn't have a url key
-        # it means that there was an error when we tried to upload
-        # so we send back that error message
-        return upload, 400
+#     track = request.files["track"]
 
-    url = upload["url"]
-    # flask_login allows us to get the current user from the request
-    new_track = Track(user=current_user, url=url)
-    db.session.add(new_track)
-    db.session.commit()
-    return {"url": url}
+#     if not allowed_file(track.filename):
+#         return {"errors": "file type not permitted"}, 400
+
+#     track.filename = get_unique_filename(track.filename)
+
+#     upload = upload_file_to_s3(track)
+
+#     if "url" not in upload:
+#         # if the dictionary doesn't have a url key
+#         # it means that there was an error when we tried to upload
+#         # so we send back that error message
+#         return upload, 400
+
+#     url = upload["url"]
+#     # flask_login allows us to get the current user from the request
+#     new_track = Track(user=current_user, url=url)
+#     db.session.add(new_track)
+#     db.session.commit()
+#     return {"url": url}
