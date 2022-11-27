@@ -1,14 +1,30 @@
+from datetime import datetime
 from app.models import db, User, environment, SCHEMA
 
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
-        username='Demo', email='demo@aa.io', password='password')
+        username='Demo',
+        email='demo@aa.io',
+        password='password',
+        birthdate=datetime(1987, 12, 1),
+        marketable=False,
+        gender="Non-binary")
     marnie = User(
-        username='marnie', email='marnie@aa.io', password='password')
+        username='marnie',
+        email='marnie@aa.io',
+        password='password',
+        birthdate=datetime(1976, 1, 31),
+        marketable=True,
+        gender="Male")
     bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password')
+        username='bobbie',
+        email='bobbie@aa.io',
+        password='password',
+        marketable=True,
+        birthdate=datetime(1991, 6, 7),
+        gender='Female')
 
     db.session.add(demo)
     db.session.add(marnie)
@@ -27,5 +43,5 @@ def undo_users():
         db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
     else:
         db.session.execute("DELETE FROM users")
-        
+
     db.session.commit()
