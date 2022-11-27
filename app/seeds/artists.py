@@ -24,7 +24,7 @@ def seed_artists():
             name='Muna',
             genre_id=9,
             artist_pic='https://amplifybuckey.s3.us-west-2.amazonaws.com/mp3/muna/saves+the+world/MUNA+artist-photo.png',
-            description="MUNA is magic. What other band could have stamped the forsaken year of 2021 with spangles and pom-poms, could have made you sing (and maybe even believe) that 'Life is so fun, life is so fun,' during what may well have been the most uneasy stretch of your life?")
+            description="What other band could have stamped the forsaken year of 2021 with spangles and pom-poms, could have made you sing (and maybe even believe) that 'Life is so fun, life is so fun,' during what may well have been the most uneasy stretch of your life?")
     # 5
     artist5 = Artist(
             name='Kacy Musgraves',
@@ -42,7 +42,7 @@ def seed_artists():
             name='Bad Bunny',
             genre_id=6,
             artist_pic='https://amplifybuckey.s3.us-west-2.amazonaws.com/mp3/bad+bunny/Un+Verano+Sin+Ti+2022/Bad_Bunny+artist-photo.png',
-            description="Bad Bunny is a young urban music singer, rapper and producer originally from Puerto Rico. This talented artist has demonstrated his already overwhelming power, influence and demand with completely sold-out concerts all over Europe, Latin America and the U.S.")
+            description="Bad Bunny is a young urban music singer, rapper and producer originally from Puerto Rico. This artist has demonstrated his overwhelming power, influence and demand with completely sold-out concerts all over Europe, Latin America and the U.S.")
     # 8
     artist8 = Artist(
             name='Ludwig van Beethoven',
