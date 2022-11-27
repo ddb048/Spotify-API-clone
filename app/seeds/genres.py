@@ -32,6 +32,9 @@ def seed_genres():
     # 10
     country = Genre(
         genre='Country')
+    # 11
+    disco = Genre(
+        genre='Disco')
 
 
     db.session.add(rock)
@@ -44,6 +47,7 @@ def seed_genres():
     db.session.add(classical)
     db.session.add(indie)
     db.session.add(country)
+    db.session.add(disco)
     db.session.commit()
 
 

@@ -9,6 +9,7 @@ class Track(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
     duration = db.Column(db.Integer, nullable=False)
+    source = db.Column(db.String, nullable=False)
     genre_id = db.Column(db.Integer, ForeignKey(add_prefix_for_prod("genres.id")))
     artist_id = db.Column(db.Integer, ForeignKey(add_prefix_for_prod("artists.id")))
     album_id = db.Column(db.Integer, ForeignKey(add_prefix_for_prod("albums.id")))
@@ -24,6 +25,7 @@ class Track(db.Model):
             'id': self.id,
             'name': self.name,
             'duration': self.duration,
+            'source': self.source,
             'genre': self.genres.to_dict(),
             'artist': self.artists.to_dict(),
             'album': self.albums.to_dict(),
