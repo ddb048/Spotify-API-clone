@@ -14,8 +14,37 @@ def get_all_tracks():
 
 
 
+
+# SECTION - Get all tracks by album /api/tracks/albums/:albumId
+@track_routes.route('/albums/<int:albumId>')
+def get_all_tracks_by_album(albumId):
+    tracks = Track.query.filter(Track.album_id == albumId).all()
+    return {'tracks': [track.to_dict() for track in tracks]}
+
+
+
+
+# SECTION - Get all tracks by artist /api/tracks/artists/:albumId
+@track_routes.route('/artists/<int:artistId>')
+def get_all_tracks_by_artist(artistId):
+    tracks = Track.query.filter(Track.artist_id == artistId).all()
+    return {'tracks': [track.to_dict() for track in tracks]}
+
+
+
+
+# SECTION - Get all tracks by genre /api/tracks/genres/:genreId
+@track_routes.route('/genres/<int:genreId>')
+def get_all_tracks_by_genre(genreId):
+    tracks = Track.query.filter(Track.genre_id == genreId).all()
+    return {'tracks': [track.to_dict() for track in tracks]}
+
+
+
+
+
 # SECTION - Get track by ID /api/tracks/:trackId
-@track_routes.route('/<int:trackId')
+@track_routes.route('/<int:trackId>')
 def get_one_track(trackId):
     track = Track.query.get(int(trackId))
     if track:
@@ -25,6 +54,8 @@ def get_one_track(trackId):
             'errors': 'track not found',
             'Status Code': 404
         }, 404
+
+
 
 
 # @track_routes.route("", methods=["POST"])

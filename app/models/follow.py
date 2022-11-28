@@ -21,6 +21,6 @@ class Follow(db.Model):
             'id': self.id,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
-            'artist': self.artists.to_dict(),
+            # 'artist': self.artists.to_dict(),
             'user': self.users.to_dict()
         }

@@ -17,7 +17,7 @@ class Genre(db.Model):
         return {
             'id': self.id,
             'genre': self.genre,
-            'artists': [artist.to_dict() for artist in self.artists],
-            'albums': [album.to_dict() for album in self.albums],
-            'tracks': [track.to_dict() for track in self.tracks]
+            # 'artists': [artist.to_dict() for artist in self.artists],
+            # 'albums': [album.to_dict() for album in self.albums],
+            # 'tracks': [track.to_dict() for track in self.tracks]
         }
