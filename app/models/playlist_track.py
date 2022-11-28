@@ -21,9 +21,8 @@ class Playlist_track(db.Model):
 
     def to_dict(self):
         return {
-            'role': self.roles,
-            'user_id': self.user_id,
-            'server_id': self.server_id,
+            'playlist_id': self.playlist_id,
+            'track_id': self.track_id,
             'playlist': self.playlists.to_dict(),
             'created': self.created_at,
             'updated': self.updated_at

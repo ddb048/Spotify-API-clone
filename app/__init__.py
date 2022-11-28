@@ -7,6 +7,12 @@ from flask_login import LoginManager
 from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
+from .api.genre_routes import genre_routes
+from .api.artist_routes import artists_routes
+from .api.albums_routes import albums_routes
+from .api.tracks_routes import track_routes
+from .api.playlist_routes import playlist_routes
+from .api.follow_routes import follow_and_likes_routes
 from .seeds import seed_commands
 from .config import Config
 
@@ -28,6 +34,14 @@ app.cli.add_command(seed_commands)
 app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
+app.register_blueprint(genre_routes, url_prefix='/api/genres')
+app.register_blueprint(artists_routes, url_prefix='/api/artists')
+app.register_blueprint(albums_routes, url_prefix='/api/albums')
+app.register_blueprint(track_routes, url_prefix='/api/tracks')
+app.register_blueprint(playlist_routes, url_prefix='/api/playlists')
+app.register_blueprint(follow_and_likes_routes, url_prefix='/api/collection')
+
+
 db.init_app(app)
 Migrate(app, db)
 

@@ -25,5 +25,5 @@ class Album(db.Model):
             'album cover':self.album_cover,
             'genre': self.genres.to_dict(),
             'artist': self.artists.to_dict(),
-            'tracks': [track.to_dict() for track in self.tracks]
+            # 'tracks': [track.to_dict() for track in self.tracks]
         }

@@ -3,12 +3,12 @@ from app.models import db, Playlist_track, environment, SCHEMA
 def seed_playlist_tracks():
     # 1
     list1 = Playlist_track(
-        playlist_id=3,
+        playlist_id=1,
         track_id=1,
        )
     # 2
     list2 = Playlist_track(
-        playlist_id=3,
+        playlist_id=2,
         track_id=2,
        )
     # 3

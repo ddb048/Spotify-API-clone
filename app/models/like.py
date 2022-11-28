@@ -21,6 +21,6 @@ class Like(db.Model):
             'id': self.id,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
-            'track': self.tracks.to_dict(),
+            # 'track': self.tracks.to_dict(),
             'user': self.users.to_dict()
         }
