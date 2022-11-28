@@ -4,4 +4,3 @@ from wtforms.validators import DataRequired, Email, ValidationError, Length
 
 class Likes(FlaskForm):
     track_id = IntegerField('Track', validators=[DataRequired()])
-    user_id = IntegerField('User', validators=[DataRequired()])

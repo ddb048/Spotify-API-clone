@@ -1,4 +1,5 @@
-from app.models import db, Like, environment, SCHEMA
+from app.models import db, environment, SCHEMA
+from ..models.like import Like
 
 def seed_likes():
     # 1

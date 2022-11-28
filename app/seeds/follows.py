@@ -1,4 +1,6 @@
-from app.models import db, Follow, environment, SCHEMA
+from app.models import db, environment, SCHEMA
+from ..models.follow import Follow
+
 
 def seed_follows():
     # 1

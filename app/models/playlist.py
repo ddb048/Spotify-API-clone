@@ -29,5 +29,5 @@ class Playlist(db.Model):
             'updated_at':self.updated_at,
             "user": self.users.to_dict(),
             'num_tracks':len(self.tracks),
-            'tracks':[track.to_dict() for track in self.tracks ],
+            #'tracks':[track.to_dict() for track in self.tracks ]
         }

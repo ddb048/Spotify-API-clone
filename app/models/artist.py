@@ -24,7 +24,7 @@ class Artist(db.Model):
             'artist pic': self.artist_pic,
             'description': self.description,
             'genre': self.genres.to_dict(),
-            'albums': [album.to_dict() for album in self.albums],
-            'tracks': [track.to_dict() for track in self.tracks],
+            # 'albums': [album.to_dict() for album in self.albums],
+            # 'tracks': [track.to_dict() for track in self.tracks],
             'follows': [follow.to_dict() for follow in self.follows]
         }

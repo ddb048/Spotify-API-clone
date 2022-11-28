@@ -27,7 +27,8 @@ class Track(db.Model):
             'duration': self.duration,
             'source': self.source,
             'genre': self.genres.to_dict(),
-            'artist': self.artists.to_dict(),
+            # 'artist': self.artists.to_dict(),
             'album': self.albums.to_dict(),
+            'playlists': [playlist.playlist_id for playlist in self.playlists],
             'likes': [like.to_dict() for like in self.likes]
         }
