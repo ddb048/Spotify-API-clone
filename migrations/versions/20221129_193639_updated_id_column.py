@@ -1,8 +1,8 @@
-"""updated datetime datatype
+"""updated id column
 
-Revision ID: eb5ff77e6994
+Revision ID: 312175eb9a53
 Revises: 
-Create Date: 2022-11-26 17:02:53.763927
+Create Date: 2022-11-29 19:36:39.873931
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'eb5ff77e6994'
+revision = '312175eb9a53'
 down_revision = None
 branch_labels = None
 depends_on = None

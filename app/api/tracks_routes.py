@@ -24,7 +24,7 @@ def get_all_tracks_by_album(albumId):
 
 
 
-# SECTION - Get all tracks by artist /api/tracks/artists/:albumId
+# SECTION - Get all tracks by artist /api/tracks/artists/:artistId
 @track_routes.route('/artists/<int:artistId>')
 def get_all_tracks_by_artist(artistId):
     tracks = Track.query.filter(Track.artist_id == artistId).all()

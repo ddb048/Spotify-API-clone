@@ -1,5 +1,7 @@
-from flask import Blueprint
+from flask import Blueprint, request
+from app.forms import playlist_form
 from flask_login import login_required, current_user
+from .auth_routes import validation_errors_to_error_messages
 from app.models import Playlist, Playlist_track, Track, Album, Artist, Genre, db
 
 
@@ -64,3 +66,112 @@ def get_playlist_tracks(playlistId):
             tracksList.append(track.to_dict())
 
     return {'tracks': tracksList}
+
+
+# SECTION POST a playlist /api/playlists
+@playlist_routes.route('', methods=['POST'])
+@login_required
+def create_playlist():
+    form = playlist_form()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        playlist = Playlist()
+        form.populate_obj(playlist)
+        playlist.user_id = current_user.id
+        db.session.add(playlist)
+        db.session.commit()
+
+        return playlist.to_dict(), 200
+    else:
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+
+
+#!SECTION UPDATE a playlist /api/playlists/:playlistId
+@playlist_routes.route('/<int:playlistId>', methods=['POST'])
+@login_required
+def update_playlist(playlistId):
+    playlist = Playlist.query.get(int(id))
+    if playlist:
+        form = playlist_form()
+        form['csrf_token'].data = request.cookies['csrf_token']
+        if form.validate_on_submit():
+            playlist = Playlist()
+            form.populate_obj(playlist)
+            db.session.commit()
+            return playlist.to_dict(), 201
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+#SECTION POST a track to a playlist /api/playlists/:playlistId/tracks/:trackId
+@playlist_routes.route('/<int:playlistId>/tracks/<int:trackId>', methods=["POST"])
+@login_required
+def add_to_playlist(playlistId, trackId):
+    playlist = get_playlist_tracks(playlistId);
+    print(playlist)
+    for track in playlist["tracks"]:
+        print(track)
+        if track['id'] == trackId:
+            return {'errors': "track already in playlist"}
+
+        else:
+
+            playlist_track=Playlist_track()
+            playlist_track.playlist_id = playlistId
+            playlist_track.track_id = trackId
+            db.session.add(playlist_track)
+            db.session.commit()
+
+            return playlist_track.to_dict(), 200
+            # return {'message': "track added to playlist"}, 200
+
+
+#!SECTION DELETE a playlist /api/playlists/:playlistId
+@playlist_routes.route('/<int:playlistId>', methods=['DELETE'])
+@login_required
+def delete_playlist(playlistId):
+    playlist = Playlist.query.get(int(playlistId))
+    if playlist:
+        db.session.delete(playlist)
+        db.session.commit()
+        return {
+            'message': 'Playlist successfully deleted',
+            'statusCode': 302
+        }, 302
+    else:
+        return {
+            'errors': 'playlist not found',
+            'statusCode': 404
+        }, 404
+
+
+
+#!SECTION GET a playlist_track list by playlistID /api/playlists/playlist_track/:playlistId
+@playlist_routes.route('/playlist_track/<int:playlistId>')
+@login_required
+def get_playlist_track(playlistId):
+    playlist_tracks_all = Playlist_track.query.all()
+    tracksList = [playlist_track.to_dict() for playlist_track in playlist_tracks_all]
+    res = []
+    for track in tracksList:
+        if track['playlist_id'] == playlistId:
+            res.append(track)
+    return {'tracks': res}, 200
+
+
+#!SECTION DELETE a track from a playlist /api/playlists/playlist_track/:playlistId/:trackId
+@playlist_routes.route('/playlist_track/<int:playlistId>/<int:trackId>')
+@login_required
+def delete_track_from_playlist(playlistId, trackId):
+    playlist_track = Playlist_track.query.filter_by(playlist_id=int(playlistId), track_id=int(trackId)).first()
+    if playlist_track:
+        db.session.delete(playlist_track)
+        db.session.commit()
+        return {
+            'message': "Track removed from playlist",
+            'statusCode': 302
+        }, 302
+    else:
+        return {
+            'errors': "Track not found in playlist",
+            'statusCode': 404
+        }, 404

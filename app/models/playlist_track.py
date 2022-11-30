@@ -23,6 +23,7 @@ class Playlist_track(db.Model):
         return {
             'playlist_id': self.playlist_id,
             'track_id': self.track_id,
+            'tracks': self.tracks.to_dict(),
             'playlist': self.playlists.to_dict(),
             'created': self.created_at,
             'updated': self.updated_at
