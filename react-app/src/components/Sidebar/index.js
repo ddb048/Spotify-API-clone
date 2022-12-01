@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory, useParams } from "react-router-dom";
+import { getAllPlaylistsThunk } from "../../store/playlist";
 import './index.css'
 
 
@@ -10,20 +11,20 @@ const SideBar = () => {
     const [playlists, setPlaylists] = useState([]);
     const [myPlaylistNumber, setMyPlaylistNumber] = useState(1);
 
-    const playlistsSelector = useSelector((state) => state.playlists);
+    const playlistSelector = useSelector((state) => state.playlists);
     const sessionUser = useSelector((state) => state.session.user);
 
 
     let usersPlaylists;
 
 
-    // useEffect(() => {
-    //     dispatch(thunkGetPlaylists());
-    // }, [dispatch]);
+    useEffect(() => {
+        dispatch(getAllPlaylistsThunk());
+    }, [dispatch]);
 
-    // useEffect(() => {
-    //     setPlaylists(Object.values(playlistsSelector));
-    // }, [playlistsSelector]);
+    useEffect(() => {
+        setPlaylists(Object.values(playlistSelector));
+    }, [playlistSelector]);
 
 
     if (sessionUser) {
@@ -57,10 +58,7 @@ const SideBar = () => {
                 description: `${sessionUser.username}'s Playlist`,
                 cover_img_url: "",
             };
-            // const newPlaylist = await dispatch(thunkAddPlaylist(playlist));
-            // if (newPlaylist) {
-            //     history.push(`/playlists/${newPlaylist.id}`);
-            // }
+
         }
     };
     return (

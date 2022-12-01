@@ -1,5 +1,5 @@
 from flask import Blueprint
-from app.models import Genre, db
+from app.models import Genre, db, Artist, Album
 
 genre_routes = Blueprint('genres', __name__)
 
@@ -25,3 +25,20 @@ def get_one_genre(genreId):
             'errors': 'genre not found',
             'Status Code': 404
         }, 404
+
+
+
+#SECTION - /api/genres/:genreId/artists
+@genre_routes.route('/<int:genreId>/artists')
+def get_genre_artists(genreId):
+    artists = Artist.query.filter(Artist.genre_id == genreId).all()
+    return {'artists': [artist.to_dict() for artist in artists]}
+
+
+
+
+#!SECTION - /api/genres/:genreId/albums
+@genre_routes.route('/<int:genreId>/albums')
+def get_genre_albums(genreId):
+    albums = Album.query.filter(Album.genre_id == genreId).all()
+    return {'albums': [album.to_dict() for album in albums]}

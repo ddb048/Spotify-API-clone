@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from app.forms import playlist_form
+from app.forms.playlist_form import PlaylistForm
 from flask_login import login_required, current_user
 from .auth_routes import validation_errors_to_error_messages
 from app.models import Playlist, Playlist_track, Track, Album, Artist, Genre, db
@@ -72,7 +72,7 @@ def get_playlist_tracks(playlistId):
 @playlist_routes.route('', methods=['POST'])
 @login_required
 def create_playlist():
-    form = playlist_form()
+    form = PlaylistForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         playlist = Playlist()
@@ -88,15 +88,14 @@ def create_playlist():
 
 
 #!SECTION UPDATE a playlist /api/playlists/:playlistId
-@playlist_routes.route('/<int:playlistId>', methods=['POST'])
+@playlist_routes.route('/<int:playlistId>', methods=['PUT'])
 @login_required
 def update_playlist(playlistId):
-    playlist = Playlist.query.get(int(id))
+    playlist = Playlist.query.get(int(playlistId))
     if playlist:
-        form = playlist_form()
+        form = PlaylistForm()
         form['csrf_token'].data = request.cookies['csrf_token']
         if form.validate_on_submit():
-            playlist = Playlist()
             form.populate_obj(playlist)
             db.session.commit()
             return playlist.to_dict(), 201

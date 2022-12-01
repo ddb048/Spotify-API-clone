@@ -6,8 +6,8 @@ from app.aws import (
 
 track_routes = Blueprint("tracks", __name__)
 
-# SECTION - Get all tracks /api/tracks/
-@track_routes.route('/')
+# SECTION - Get all tracks /api/tracks
+@track_routes.route('')
 def get_all_tracks():
     tracks = Track.query.all()
     return {'tracks': [track.to_dict() for track in tracks]}
