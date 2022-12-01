@@ -8,17 +8,18 @@ const AudioBar = () => {
     const [mp3, setMp3] = useState("");
     const [buffer, setBuffer] = useState(false);
 
-    const songQueue = useSelector((state) => state.songQueue);
+    const queue = useSelector((state) => state.queue);
     let songs;
+
     // useEffect(() => {
-    //     if (songQueue.length) {
-    //         setMp3(songs[songQueue[0]]?.songUrl);
+    //     if (queue.length) {
+    //         setMp3(songs[queue[0]]?.source);
     //     }
-    // }, [songQueue, songs]);
+    // }, [queue, songs]);
 
     // useEffect(() => {
 
-    //     if (songs[songQueue[0]]?.songUrl) {
+    //     if (songs[queue[0]]?.source) {
     //         let music = document.querySelector("audio");
     //         music
     //             .play()
@@ -52,10 +53,10 @@ const AudioBar = () => {
     return (
         <div id="audio-controls-nav-bar_div">
             <div id="song-display_div">
-                {songQueue ? (
+                {queue ? (
                     <img
                         id="audio-controls_img"
-                        src={songs[songQueue[0]].albumImageUrl}
+                        src={songs[queue[0]].albumImageUrl}
                         alt="album img"
                     />
                 ) : (
@@ -65,16 +66,16 @@ const AudioBar = () => {
                         alt="album img"
                     />
                 )}
-                {songQueue ? (
+                {queue ? (
                     <p id="audio-controls_name">
-                        {songs[songQueue[0]].title}
+                        {songs[queue[0]].title}
                     </p>
                 ) : (
                     <p id="audio-controls_name">Song Title</p>
                 )}
-                {songQueue ? (
+                {queue ? (
                     <p id="audio-controls_album-title">
-                        {songs[songQueue[0]].artist}
+                        {songs[queue[0]].artist}
                     </p>
                 ) : (
                     <p id="audio-controls_album-title">Artist</p>
