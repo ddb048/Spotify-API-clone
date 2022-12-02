@@ -6,6 +6,7 @@ import SignUpForm from './components/auth/SignUpForm';
 import NavBarTop from './components/NavBarTop';
 import SideBar from './components/Sidebar';
 import AudioBar from './components/AudioBar';
+import Main from './components/Main';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
@@ -47,10 +48,9 @@ function App() {
             <User />
           </ProtectedRoute>
           <Route path='/' exact={true} >
-            <h1>My Home Page</h1>
+            <Main loaded={loaded} />
           </Route>
         </Switch>
-        <SideBar />
         <AudioBar />
       </BrowserRouter>
     </>

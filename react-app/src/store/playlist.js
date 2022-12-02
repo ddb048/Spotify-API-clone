@@ -33,11 +33,6 @@ const updatePlaylist = (playlist) => ({
     playlist
 });
 
-const updatePlaylistTracks = (playlistTracks) => ({
-    type: UPDATE_PLAYLIST_TRACKS,
-    playlistTracks
-});
-
 const deletePlaylist = (playlist) => ({
     type: DELETE_PLAYLIST,
     playlist
@@ -63,6 +58,7 @@ export const getAllPlaylistsThunk = () => async dispatch => {
 
     if (response.ok) {
         const playlists = await response.json();
+        (console.log('playlists from playlists thunk', playlists))
         dispatch(loadAllPlaylists(playlists.playlists))
         return playlists.playlists
     }
@@ -195,7 +191,7 @@ const playlistReducer = (state = initialState, action) => {
             return newState
 
         case DELETE_PLAYLIST_TRACK:
-            delete newState.PlaylistTracks[playlistTrack];
+            delete newState.PlaylistTracks[action.playlistTrack];
             return newState
 
         default:

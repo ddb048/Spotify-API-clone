@@ -56,7 +56,7 @@ const AudioBar = () => {
                 {queue ? (
                     <img
                         id="audio-controls_img"
-                        src={songs[queue[0]].albumImageUrl}
+                        src={Small_logo}
                         alt="album img"
                     />
                 ) : (
@@ -68,14 +68,14 @@ const AudioBar = () => {
                 )}
                 {queue ? (
                     <p id="audio-controls_name">
-                        {songs[queue[0]].title}
+                        {null}
                     </p>
                 ) : (
                     <p id="audio-controls_name">Song Title</p>
                 )}
                 {queue ? (
                     <p id="audio-controls_album-title">
-                        {songs[queue[0]].artist}
+                        {null}
                     </p>
                 ) : (
                     <p id="audio-controls_album-title">Artist</p>

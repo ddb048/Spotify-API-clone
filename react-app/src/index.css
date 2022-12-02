@@ -5,6 +5,19 @@
     Padding: 0;
     scrollbar-width: none;
     margin: 0px;
+    text-decoration: none;
+}
+
+html {
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+
+main {
+    overflow-y: hidden;
+    display: flex;
+    height: 100%;
 }
 
 ::-webkit-scrollbar {
@@ -27,12 +40,12 @@
     display: none;
     display: flex;
     flex-direction: column-reverse;
-    background: #888;
+    background: rgb(21, 21, 21);
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     display: none;
 
-    background: #555;
+    background: black;
 }

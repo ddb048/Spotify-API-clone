@@ -30,7 +30,7 @@ const SideBar = () => {
     if (sessionUser) {
         usersPlaylists =
             playlists &&
-            playlists.filter((playlist) => playlist.user.id === sessionUser.id);
+            playlists.filter((playlist) => playlist.user_id === sessionUser.id);
     }
 
 
@@ -65,25 +65,25 @@ const SideBar = () => {
         <div className="side-bar">
             <div className="side-bar-container">
 
-                <div className="side-bar-links"></div>
-                <NavLink className="sidebar-link" to="/" exact={true}>
-                    <i className="fa fa-home" />
-                    Home
-                </NavLink>
-                <NavLink className="sidebar-link" to="/search" exact={true}>
-                    <i className="fa fa-search" />
-                    Search
-                </NavLink>
-                <NavLink className="sidebar-link" to="/collection" exact={true}>
-                    <i className="fa fa-music" />
-                    Your Library
-                </NavLink>
+                <div className="side-bar-links">
+                    <NavLink className="sidebar-link" to="/" exact={true}>
+                        <i className="fa fa-home" />
+                        Home
+                    </NavLink>
+                    <NavLink className="sidebar-link" to="/search" exact={true}>
+                        <i className="fa fa-search" />
+                        Search
+                    </NavLink>
+                    <NavLink className="sidebar-link" to="/collection" exact={true}>
+                        <i className="fa fa-music" />
+                        Your Library
+                    </NavLink>
 
-                {sessionUser && <div className="sidebar-link" onClick={onSubmit}>
-                    <i className="fa fa-plus" />
-                    Create Playlist
-                </div>}
-
+                    {sessionUser && <div className="sidebar-link" onClick={onSubmit}>
+                        <i className="fa fa-plus" />
+                        Create Playlist
+                    </div>}
+                </div>
 
                 <div className="side-bar-playlist-list">
                     {sessionUser &&

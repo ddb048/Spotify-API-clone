@@ -4,6 +4,9 @@
     grid-row: 10;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
 #song-display_div {

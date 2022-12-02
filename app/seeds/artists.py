@@ -5,7 +5,7 @@ def seed_artists():
     artist1 = Artist(
         name='NF',
         genre_id=5,
-        artist_pic='https://amplifybuckey.s3.us-west-2.amazonaws.com/mp3/Spotify_%E2%80%93_NF.png',
+        artist_pic='https://amplifybuckey.s3.us-west-2.amazonaws.com/mp3/bad+bunny/Un+Verano+Sin+Ti+2022/Bad_Bunny+artist-photo.png',
         description='NF is the stage name of Michigan rapper and composer Nate Feuerstein, who emerged with his debut album, Mansion , in 2015.')
     # 2
     artist2 = Artist(
