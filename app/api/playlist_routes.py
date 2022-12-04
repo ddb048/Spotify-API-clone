@@ -158,7 +158,7 @@ def get_playlist_track(playlistId):
 
 
 #!SECTION DELETE a track from a playlist /api/playlists/playlist_track/:playlistId/:trackId
-@playlist_routes.route('/playlist_track/<int:playlistId>/<int:trackId>')
+@playlist_routes.route('/playlist_track/<int:playlistId>/<int:trackId>', methods=['DELETE'])
 @login_required
 def delete_track_from_playlist(playlistId, trackId):
     playlist_track = Playlist_track.query.filter_by(playlist_id=int(playlistId), track_id=int(trackId)).first()

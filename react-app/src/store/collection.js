@@ -104,7 +104,7 @@ export const likeTrackThunk = (track) => async dispatch => {
 
     if (response.ok) {
         const like = await response.json();
-        dispatch(likeTrack(like))
+        dispatch(likeTrack(track))
         return like
     }
 }
@@ -114,7 +114,7 @@ export const unlikeTrackThunk = (track) => async dispatch => {
 
     if (response.ok) {
         const unlike = await response.json();
-        dispatch(unlikeTrack(unlike))
+        dispatch(unlikeTrack(track))
         return unlike
     }
 }
@@ -173,7 +173,7 @@ const collectionReducer = (state = initialState, action) => {
 
         case UNLIKE_TRACK:
             newState = { ...state }
-            delete newState.tracks[action.track]
+            delete newState.tracks[action.track.id]
             return newState
 
         default:

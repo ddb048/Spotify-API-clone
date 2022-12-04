@@ -1,12 +1,126 @@
+.main-page-container {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+
 .detail-header {
     display: flex;
     flex-direction: row;
-    height: 40%;
+    min-height: 260px;
     width: 100%;
+    background-image: linear-gradient(rgb(160, 106, 231), rgb(18, 18, 18));
+}
+
+.detail_image_container {
+    height: auto;
+    width: auto;
+    padding: 1%;
+    align-items: flex-end;
+    justify-content: flex-end;
+
 }
 
 .detail_image {
+    display: flex;
     width: 200px;
     height: 200px;
-    box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 80%);
+    box-shadow: 0px 8px 16px 0px rgb(0 0 0);
+}
+
+.detail-header-textblock-container {
+    padding-top: 3%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+}
+
+.detail-title {
+    font-size: 100px;
+    font-weight: bold;
+}
+
+.buttons-section {
+    padding: 1%;
+    max-height: 300px;
+    display: flex;
+    flex-direction: row;
+
+}
+
+#play_button {
+    color: rgb(30, 215, 96);
+    font-size: 75px;
+    height: 100px;
+    width: 100px;
+}
+
+#play_button:hover {
+    font-size: 80px;
+    transition: 0.1s;
+}
+
+.follow-button {
+    height: 40px;
+    width: 100px;
+    border-radius: 5px;
+    border: 1px solid rgb(83, 83, 83);
+
+    margin-top: 15px;
+    color: white;
+    background-color: rgb(18, 18, 18);
+}
+
+.follow-button:hover {
+    border: 1px solid lightgray;
+}
+
+.unfollow-button:hover {
+    border: 1px solid lightgray;
+}
+
+.unfollow-button {
+    height: 40px;
+    width: 100px;
+    border-radius: 5px;
+    border: 1px solid rgb(83, 83, 83);
+    margin-top: 15px;
+    color: white;
+    background-color: rgb(18, 18, 18);
+}
+
+.follow-alert {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    background-color: rgb(46, 119, 208);
+    color: white;
+    bottom: 160px;
+    right: 50%;
+    left: 50%;
+    border: none;
+    height: 40px;
+    width: 260px;
+    border-radius: 5px;
+    transition: 0.3s;
+
+}
+
+.unfollow-alert {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    background-color: rgb(46, 119, 208);
+    color: white;
+    bottom: 160px;
+    right: 50%;
+    left: 50%;
+    border: none;
+    height: 40px;
+    width: 260px;
+    border-radius: 5px;
+    transition: 0.3s;
 }

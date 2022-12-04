@@ -1,7 +1,7 @@
 .NavbarTop-Main {
     display: flex;
     justify-content: space-between;
-    background-image: linear-gradient(rgb(81, 22, 158), rgb(44, 15, 102));
+    background-image: linear-gradient(rgb(181, 133, 244), rgb(160, 106, 231));
 }
 
 .logo-img {

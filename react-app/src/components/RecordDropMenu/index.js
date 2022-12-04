@@ -1,13 +1,19 @@
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
+import { getAllUsersTracksThunk, getAllUsersPlaylistsThunk } from '../../store/collection';
 import { deletePlaylistTrackThunk, createPlaylistTrackThunk } from '../../store/playlist';
+import './index.css'
+
 
 const RecordDropMenu = ({ track, usersPlaylists }) => {
     const dispatch = useDispatch();
 
+    const [loaded, setLoaded] = useState(false)
     const [showPlaylistAddMenu, setShowPlaylistAddMenu] = useState(false);
     const [showPlaylistRemoveMenu, setShowPlaylistRemoveMenu] = useState(false);
+    const [showPlaylistAddAlert, setShowPlaylistAddAlert] = useState(false);
+    const [showPlaylistRemoveAlert, setShowPlaylistRemoveAlert] = useState(false);
 
     console.log(usersPlaylists, "usersPlaylists from inside Record dropdown menu")
 
@@ -19,21 +25,22 @@ const RecordDropMenu = ({ track, usersPlaylists }) => {
     const usersPlaylistsWithTrack = track.playlists.filter(playlist => userPlaylistIdSet.has(+playlist))
     console.log(usersPlaylistsWithTrack, "array of playlists Ids")
 
-    const addTracktoPlaylist = async (playlist) => {
-        console.log(playlist.id, "value from addTracktoPlayist menu")
-        const response = await dispatch(createPlaylistTrackThunk(playlist.id, track))
+    const addTracktoPlaylist = (playlist) => {
+        console.log(playlist, "value from addTracktoPlayist menu")
+        dispatch(createPlaylistTrackThunk(playlist, track))
 
-        if (response.ok) {
-            setShowPlaylistAddMenu(false)
-        }
+        setShowPlaylistAddAlert(true)
+        setShowPlaylistAddMenu(false)
+
     };
 
-    const removeTrackFromPlaylist = async (playlistId) => {
-        const response = await dispatch(deletePlaylistTrackThunk(playlistId, track))
+    const removeTrackFromPlaylist = (playlist) => {
+        console.log(playlist, "playlist from delete track from playlist")
+        dispatch(deletePlaylistTrackThunk(playlist, track))
 
-        if (response.ok) {
-            setShowPlaylistRemoveMenu(false)
-        }
+        setShowPlaylistRemoveAlert(true)
+        setShowPlaylistRemoveMenu(false)
+
     }
 
     const handleClick = useCallback(() => {
@@ -54,51 +61,80 @@ const RecordDropMenu = ({ track, usersPlaylists }) => {
     }, [showPlaylistAddMenu, showPlaylistRemoveMenu])
 
 
+    useEffect(() => {
+        if (setShowPlaylistAddAlert) {
+            const timeout = setTimeout(() => setShowPlaylistAddAlert(false), 1500);
+            return () => clearTimeout(timeout);
+        }
+    }, [showPlaylistAddAlert]);
+
+    useEffect(() => {
+        if (setShowPlaylistRemoveAlert) {
+            const timeout = setTimeout(() => setShowPlaylistRemoveAlert(false), 1500);
+            return () => clearTimeout(timeout);
+        }
+    }, [showPlaylistRemoveAlert]);
+
+    useEffect(() => {
+        (async () => {
+            await dispatch(getAllUsersTracksThunk())
+            await dispatch(getAllUsersPlaylistsThunk())
+                .then(() => setLoaded(true))
+        })();
+    }, [dispatch, showPlaylistAddAlert, showPlaylistRemoveAlert]);
+
     return (
         <>
-            <div>
-                <p className='allow-pointer-events'>
-                    <span onClick={() => setShowPlaylistAddMenu(true)}
-                        className="allow-pointer-events material-icons" >playlist_add</span>
-                </p>
-                {showPlaylistAddMenu && (
-                    <div className='allow-pointer-events add-to-playlist_dropdown'>
-                        <div className='allow-pointer-events add-to-playlist_dropdown_options'>
-                            {usersPlaylistArray.map(playlist =>
-                                <div
-                                    key={playlist}
-                                    value={playlist}
-                                    onClick={() => addTracktoPlaylist(playlist)}
-                                    className='allow-pointer-events add-to-playlist_dropdown_slot'>
-                                    {playlist.name}
-                                </div>
-                            )}
+            {loaded && (
+                <div>
+                    <p className='allow-pointer-events'>
+                        <span onClick={() => setShowPlaylistAddMenu(true)}
+                            className="allow-pointer-events material-icons" >playlist_add</span>
+                    </p>
+                    {showPlaylistAddMenu && (
+                        <div className='allow-pointer-events add-to-playlist_dropdown'>
+                            <div className='allow-pointer-events add-to-playlist_dropdown_options'>
+                                {usersPlaylistArray.map(playlist =>
+                                    <div
+                                        key={playlist}
+                                        value={playlist}
+                                        onClick={() => addTracktoPlaylist(playlist)}
+                                        className='allow-pointer-events add-to-playlist_dropdown_slot'>
+                                        {playlist.name}
+                                    </div>
+                                )}
+                            </div>
                         </div>
-                    </div>
-                )}
-                <p className='allow-pointer-events'>
-                    <span onClick={() => setShowPlaylistRemoveMenu(true)}
-                        className="allow-pointer-events material-icons" >playlist_remove</span>
-                </p>
-                {usersPlaylistsWithTrack.length > 0 ? showPlaylistRemoveMenu && (
-                    <div className='allow-pointer-events remove-from-playlist_dropdown'>
-                        <div className='allow-pointer-events remove-from-playlist_dropdown_options'>
-                            {usersPlaylistsWithTrack.map(playlist =>
-                                <div
-                                    key={playlist}
-                                    value={playlist}
-                                    onClick={removeTrackFromPlaylist}
-                                    className='allow-pointer-events remove-from-playlist_dropdown_slot'>
-                                    {usersPlaylists[playlist].name}
-                                </div>
-                            )}
+                    )}
+                    <p className='allow-pointer-events'>
+                        <span onClick={() => setShowPlaylistRemoveMenu(true)}
+                            className="allow-pointer-events material-icons" >playlist_remove</span>
+                    </p>
+                    {track.playlists.length ? showPlaylistRemoveMenu && (
+                        <div className='allow-pointer-events remove-from-playlist_dropdown'>
+                            <div className='allow-pointer-events remove-from-playlist_dropdown_options'>
+                                {usersPlaylistsWithTrack.map(playlist =>
+                                    <div
+                                        key={playlist}
+                                        value={playlist}
+                                        onClick={() => removeTrackFromPlaylist(playlist)}
+                                        className='allow-pointer-events remove-from-playlist_dropdown_slot'>
+                                        {usersPlaylists[playlist].name}
+                                    </div>
+                                )}
+                            </div>
                         </div>
-                    </div>
-                ) :
+                    ) :
 
-                    null}
-
-            </div>
+                        null}
+                </div>
+            )}
+            {showPlaylistAddAlert && (
+                <div className='follow-alert'>Added to your playlist</div>
+            )}
+            {showPlaylistRemoveAlert && (
+                <div className='unfollow-alert'>Removed from your playlist</div>
+            )}
         </>
     )
 

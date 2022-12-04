@@ -159,7 +159,7 @@ export const deletePlaylistThunk = playlist => async dispatch => {
 }
 
 export const deletePlaylistTrackThunk = (playlist, playlistTrack) => async dispatch => {
-    const response = await fetch(`/api/playlists/playlist_track/${playlist.id}/${playlistTrack.id}`, {
+    const response = await fetch(`/api/playlists/playlist_track/${playlist}/${playlistTrack.id}`, {
         method: 'DELETE'
     });
 

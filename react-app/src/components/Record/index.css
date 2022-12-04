@@ -1,15 +1,91 @@
-.material-symbols-outlined-unliked {
-    font-variation-settings:
-        'FILL' 0,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 48
+.complete-record {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    max-width: 1200px;
+
+    /* border: 1px solid rgb(31, 223, 100); */
+    border-radius: 5px;
+    color: rgb(104, 104, 104);
 }
 
-.material-symbols-outlined-liked {
-    font-variation-settings:
-        'FILL' 1,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 48
+.song-icon {
+    margin-right: 10px;
+}
+
+.allow-pointer-events {
+    pointer-events: all;
+    cursor: pointer;
+}
+
+.complete-record:hover {
+    background-color: rgb(63, 63, 63);
+}
+
+.record-front-grouping {
+    display: flex;
+    flex-direction: row;
+    margin-left: 15px;
+}
+
+.record-front {
+    display: flex;
+    align-items: center;
+}
+
+.record-front-mid {
+    margin-left: 15px;
+}
+
+.unliked {
+    color: white;
+}
+
+.liked {
+    color: rgb(31, 223, 100);
+}
+
+.record-track-image {
+    height: 40px;
+    width: 40px;
+}
+
+.record-mid-back {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+}
+
+.record-center {
+    /* position: fixed;
+    right: 60%;
+    left: 60%; */
+    display: flex;
+    flex-direction: row;
+    width: 180px;
+    /* justify-content: center;
+    align-items: center; */
+}
+
+.record-artist {
+    font-weight: bold;
+}
+
+.record-title {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.record-back {
+    display: flex;
+    align-items: center;
+    justify-content: row;
+}
+
+.like-container {
+    margin-right: 40px;
 }

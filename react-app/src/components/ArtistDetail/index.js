@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Color from 'color-thief-react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAlbumsByArtistThunk } from '../../store/album';
@@ -28,6 +29,7 @@ const ArtistDetail = () => {
     console.log(artistTracks, "artistTracks from artist Details page")
 
 
+
     const handleAddFollow = () => {
         console.log(artist, "artist from handlefollow")
         dispatch(followArtistThunk(artist))
@@ -54,9 +56,11 @@ const ArtistDetail = () => {
         }
     }, [showUnfollowAlert]);
 
+    let imgSrc = artist.artist_pic;
 
     useEffect(() => {
         (async () => {
+
             await dispatch(getAllUsersArtistsThunk())
             await dispatch(getOneArtistThunk(artistId))
             await dispatch(getAlbumsByArtistThunk(artistId))
@@ -64,52 +68,56 @@ const ArtistDetail = () => {
                 .then(() => setLoaded(true))
         })();
     }, [dispatch]);
-
+    const Loading = () => <div>Loading...</div>;
     return (
         <>
             {loaded &&
                 (<div className='fullview'>
                     <SideBar />
                     <div className='main-page-container'>
-                        <div className='detail-header'>
-                            <div className='detail_image_container'>
-                                <img className="detail_image"
-                                    src={artist.artist_pic}
+                        <Color src={imgSrc} crossOrigin="anonymous" format='hex'>
+                            {({ data, loading }) => {
+                                if (loading) return <Loading />
+                                return (
+                                    <div className='detail-header' crossOrigin="anonymous" style={{ backgroundColor: { data } }}>
 
-                                    alt='Artist Img' />
-                            </div>
-                            <div className='detail-header-textblock-container'>
-                                <div className='detail-type'>Artist</div>
-                                <div className='detail-title'>{artist.name}</div>
-                                <div className='detail-subtext-container'>
 
-                                </div>
-                            </div>
-                        </div>
+
+                                        <div className='detail_image_container'>
+                                            {data}
+                                            <img className="detail_image"
+                                                src={imgSrc}
+
+                                                alt='Artist Img' />
+                                        </div>
+                                        <div className='detail-header-textblock-container'>
+                                            <div className='detail-type'>Artist</div>
+                                            <div className='detail-title'>{artist.name}</div>
+                                            <div className='detail-subtext-container'>
+
+                                            </div>
+                                        </div>
+                                    </div>)
+                            }}
+                        </Color>
                         <div className='buttons-section'>
-
-                            <span
-                                id="play_button"
-                                className="material-icons"
-                                onClick={null}
-                            >
-                                play_circle_filled
-                            </span>
-
+                            <div class>
+                                <span
+                                    id="play_button"
+                                    className="material-icons"
+                                    onClick={null}
+                                >
+                                    play_circle_filled
+                                </span>
+                            </div>
                             {usersArtists.find(artist => artist.id === +artistId) ?
                                 <button className='follow-button'
-                                    onClick={handleUnfollow}>Following</button>
+                                    onClick={handleUnfollow}>FOLLOWING</button>
                                 :
                                 <button className='unfollow-button'
-                                    onClick={handleAddFollow}>Follow</button>}
+                                    onClick={handleAddFollow}>FOLLOW</button>}
 
 
-                        </div>
-                        <div className='track-table'>
-                            <p className='track-title'>Title</p>
-                            <p className='track-artist'>Artist</p>
-                            <p className='track-album'>Album</p>
-                            <p className='track-duration'>Duration</p>
                         </div>
 
                         <div className='track-table-details-container'>
