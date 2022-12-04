@@ -3,6 +3,7 @@ const GET_PLAYLIST = 'playlists/GET_PLAYLIST'
 const GET_PLAYLISTS = 'playlists/GET_PLAYLISTS'
 const GET_PLAYLIST_TRACKS = 'playlists/GET_PLAYLIST_TRACKS'
 const CREATE_PLAYLIST = 'playlists/CREATE_PLAYLIST'
+const CREATE_PLAYLIST_TRACK = 'playlists/CREATE_PLAYLIST_TRACKS'
 const UPDATE_PLAYLIST = 'playlists/UPDATE_PLAYLIST'
 const DELETE_PLAYLIST = 'playlists/DELETE_PLAYLIST'
 const DELETE_PLAYLIST_TRACK = 'playlists/DELETE_PLAYLIST_TRACK'
@@ -26,6 +27,11 @@ const loadPlaylistTracks = (playlistTracks) => ({
 const createPlaylist = (playlist) => ({
     type: CREATE_PLAYLIST,
     playlist
+})
+
+const createPlaylistTrack = (playlistTrack) => ({
+    type: CREATE_PLAYLIST_TRACK,
+    playlistTrack
 })
 
 const updatePlaylist = (playlist) => ({
@@ -93,6 +99,27 @@ export const createPlaylistThunk = newPlaylist => async dispatch => {
         const data = await response.json();
         if (data.errors) {
             return data;
+        }
+    }
+}
+
+export const createPlaylistTrackThunk = (playlist, track) => async dispatch => {
+    const response = await fetch(`/api/playlists/${playlist.id}/tracks/${track.id}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(playlist, track)
+    });
+
+    if (response.ok) {
+        const newPlaylistTrack = await response.json();
+        dispatch(createPlaylistTrack(newPlaylistTrack));
+        return newPlaylistTrack;
+
+    } else if (response.status < 500) {
+
+        const data = await response.json();
+        if (data.errors) {
+            return data
         }
     }
 }
@@ -180,7 +207,13 @@ const playlistReducer = (state = initialState, action) => {
             return newState
 
         case CREATE_PLAYLIST:
+            newState = { ...state }
             newState.playlists[action.playlist.id] = action.playlist
+            return newState
+
+        case CREATE_PLAYLIST_TRACK:
+            newState = { ...state }
+            newState.PlaylistTracks[action.playlistTrack] = action.playlistTrack
             return newState
 
         case UPDATE_PLAYLIST:

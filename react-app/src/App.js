@@ -7,6 +7,7 @@ import NavBarTop from './components/NavBarTop';
 import SideBar from './components/Sidebar';
 import AudioBar from './components/AudioBar';
 import Main from './components/Main';
+import ArtistDetail from './components/ArtistDetail';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
@@ -44,9 +45,9 @@ function App() {
           <ProtectedRoute path='/users' exact={true} >
             <UsersList />
           </ProtectedRoute>
-          <ProtectedRoute path='/users/:userId' exact={true} >
-            <User />
-          </ProtectedRoute>
+          <Route path='/artists/:artistId'>
+            <ArtistDetail />
+          </Route>
           <Route path='/' exact={true} >
             <Main loaded={loaded} />
           </Route>

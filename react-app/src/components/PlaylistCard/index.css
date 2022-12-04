@@ -36,12 +36,12 @@
 }
 
 .card-textblock {
-    padding-left: 18px;
+    /* padding-left: 18px; */
     text-decoration: none;
 }
 
 .card-text {
-    font-size: 18px;
+    font-size: 14px;
     text-decoration: none;
     font-weight: bold;
     color: whitesmoke;
@@ -51,5 +51,5 @@
 
 .card-text-sub {
     font-size: 14px;
-    color: whitesmoke;
+    color: rgb(102, 102, 102);
 }

@@ -91,7 +91,7 @@ class User(db.Model, UserMixin):
             'marketable': self.marketable,
             'birthdate': self.birthdate,
             'gender': self.gender,
-            # 'playlists': [playlist.to_dict() for playlist in self.playlists],
-            # 'follows': [follow.to_dict() for follow in self.follows],
-            # 'likes': [like.to_dict() for like in self.likes]
+            #  'playlists': [playlist.to_dict() for playlist in self.playlists],
+            #  'follows': [follow.to_dict() for follow in self.follows],
+            #  'likes': [like.to_dict() for like in self.likes]
         }

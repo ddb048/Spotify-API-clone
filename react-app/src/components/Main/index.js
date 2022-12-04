@@ -8,6 +8,7 @@ import ArtistCard from '../ArtistCard';
 import AlbumCard from '../AlbumCard';
 import SideBar from '../Sidebar';
 import './index.css'
+
 const Main = () => {
     const [loaded, setLoaded] = useState(false);
     const dispatch = useDispatch()
@@ -15,17 +16,6 @@ const Main = () => {
     const playlists = useSelector((state) => Object.values(state.playlists.playlists))
     const artists = useSelector((state) => Object.values(state.artists.artists))
 
-    // const artist = useSelector((state) => state.artists.artists)
-
-    // console.log(artist, "artist test selector")
-
-    // useEffect(() => {
-    //     (async () => {
-    //         await dispatch(allProducts());
-    //         await dispatch(loadUserCart(userId));
-    //         setLoaded(true);
-    //     })();
-    // }, [dispatch]);
 
     useEffect(() => {
         (async () => {

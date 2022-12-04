@@ -49,7 +49,7 @@ const unlikeTrack = track => ({
 
 
 export const getAllUsersPlaylistsThunk = () => async dispatch => {
-    const response = await fetch('/api/collection')
+    const response = await fetch('/api/playlists/collection')
 
     if (response.ok) {
         const playlists = await response.json();
@@ -80,10 +80,11 @@ export const getAllUsersArtistsThunk = () => async dispatch => {
 
 export const followArtistThunk = (artist) => async dispatch => {
     const response = await fetch(`/api/collection/artists/${artist.id}/follow`)
-
+    console.log(response, "response from follow thunk")
     if (response.ok) {
         const follow = await response.json();
-        dispatch(followArtist(follow))
+        console.log(artist, "artist from follow thunk after response.ok")
+        dispatch(followArtist(artist))
         return follow
     }
 }
@@ -93,7 +94,7 @@ export const unfollowArtistThunk = (artist) => async dispatch => {
 
     if (response.ok) {
         const unfollow = await response.json();
-        dispatch(unfollowArtist(unfollow))
+        dispatch(unfollowArtist(artist))
         return unfollow
     }
 }
@@ -156,18 +157,22 @@ const collectionReducer = (state = initialState, action) => {
             return newState
 
         case FOLLOW_ARTIST:
+            newState = { ...state }
             newState.artists[action.artist.id] = action.artist
             return newState
 
         case UNFOLLOW_ARTIST:
-            delete newState.artists[action.artist]
+            newState = { ...state }
+            delete newState.artists[action.artist.id]
             return newState
 
         case LIKE_TRACK:
+            newState = { ...state }
             newState.tracks[action.track.id] = action.track
             return newState
 
         case UNLIKE_TRACK:
+            newState = { ...state }
             delete newState.tracks[action.track]
             return newState
 
