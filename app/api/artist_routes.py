@@ -1,11 +1,11 @@
 from flask import Blueprint
 from flask_login import login_required, current_user
-from app.models import Artist, db
+from app.models import Artist, Album, db
 
 
 artists_routes = Blueprint('artists', __name__)
 
-# SECTION - Get all artists /api/artists/
+# SECTION - Get all artists /api/artists
 @artists_routes.route('')
 def get_all_artists():
     artists = Artist.query.all()
@@ -25,3 +25,10 @@ def get_one_artist(artistId):
             'errors': 'artist not found',
             'Status Code': 404
         }, 404
+
+
+#!SECTION - Get albums by artistId /api/artists/:artistId/albums
+@artists_routes.route('/<int:artistId>/albums')
+def get_artists_albums(artistId):
+    albums = Album.query.filter(Album.artist_id == artistId).all()
+    return {'albums': [album.to_dict() for album in albums]}

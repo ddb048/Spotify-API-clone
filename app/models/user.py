@@ -20,6 +20,7 @@ class User(db.Model, UserMixin):
     playlists = db.relationship('Playlist', back_populates='users', cascade="all,delete")
     follows = db.relationship('Follow', back_populates='users', cascade="all,delete")
     likes = db.relationship('Like', back_populates='users', cascade="all,delete")
+    queue = db.relationship('Queue', back_populates='users')
 
     @property
     def password(self):
@@ -91,7 +92,8 @@ class User(db.Model, UserMixin):
             'marketable': self.marketable,
             'birthdate': self.birthdate,
             'gender': self.gender,
-            # 'playlists': [playlist.to_dict() for playlist in self.playlists],
-            # 'follows': [follow.to_dict() for follow in self.follows],
-            # 'likes': [like.to_dict() for like in self.likes]
+            # 'queue': self.queue
+            #  'playlists': [playlist.to_dict() for playlist in self.playlists],
+            #  'follows': [follow.to_dict() for follow in self.follows],
+            #  'likes': [like.to_dict() for like in self.likes]
         }

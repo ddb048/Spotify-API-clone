@@ -1,0 +1,60 @@
+.fullview {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 200vw;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.main-page-container {
+    /* position: relative; */
+    display: flex;
+    height: 84vh;
+    min-width: 200vw;
+    overflow: hidden;
+    overflow-x: hidden;
+    scroll-margin-bottom: none;
+    background: rgb(18, 18, 18);
+    bottom: 40px;
+}
+
+.main-selector-container {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.section-title {
+    font-size: 35px;
+    color: whitesmoke;
+    padding-top: 20px;
+    padding-left: 2vw;
+    font-weight: bold;
+    letter-spacing: -1px;
+
+}
+
+.card-container {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    gap: 25px;
+    overflow-x: scroll;
+}
+
+.playlist-card {
+    background-color: rgb(22, 22, 22);
+    border-radius: 5px;
+    height: 300px;
+    width: 240px;
+    display: flex;
+
+    box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 80%);
+}
+
+.playlist-card:hover {
+    background-color: rgb(38, 38, 38);
+
+}

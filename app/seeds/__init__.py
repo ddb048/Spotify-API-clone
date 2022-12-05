@@ -8,6 +8,8 @@ from .playlists import seed_playlists, undo_playlists
 from .playlist_tracks import seed_playlist_tracks, undo_playlist_tracks
 from .follows import seed_follows, undo_follows
 from .likes import seed_likes, undo_likes
+from .queue import seed_queue, undo_queue
+from .queue_tracks import seed_queue_tracks, undo_queue_tracks
 
 from app.models.db import db, environment, SCHEMA
 
@@ -33,6 +35,8 @@ def seed():
         undo_playlist_tracks()
         undo_follows()
         undo_likes()
+        undo_queue()
+        undo_queue_tracks()
     seed_users()
     seed_genres()
     seed_artists()
@@ -42,6 +46,8 @@ def seed():
     seed_playlist_tracks()
     seed_follows()
     seed_likes()
+    seed_queue()
+    seed_queue_tracks()
     # Add other seed functions here
 
 
@@ -57,4 +63,6 @@ def undo():
     undo_playlist_tracks()
     undo_follows()
     undo_likes()
+    undo_queue()
+    undo_queue_tracks()
     # Add other undo functions here

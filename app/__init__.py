@@ -13,6 +13,7 @@ from .api.albums_routes import albums_routes
 from .api.tracks_routes import track_routes
 from .api.playlist_routes import playlist_routes
 from .api.follow_routes import follow_and_likes_routes
+from .api.queue_routes import queue_routes
 from .seeds import seed_commands
 from .config import Config
 
@@ -40,6 +41,7 @@ app.register_blueprint(albums_routes, url_prefix='/api/albums')
 app.register_blueprint(track_routes, url_prefix='/api/tracks')
 app.register_blueprint(playlist_routes, url_prefix='/api/playlists')
 app.register_blueprint(follow_and_likes_routes, url_prefix='/api/collection')
+app.register_blueprint(queue_routes, url_prefix='/api/queue')
 
 
 db.init_app(app)

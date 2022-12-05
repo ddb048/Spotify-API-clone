@@ -1,0 +1,30 @@
+.buttons-container {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+}
+
+.subButton:hover {
+    background-color: rgb(22, 103, 49);
+}
+
+.subButton:active {
+    transform: scale(0.95);
+}
+
+.btn-dlt {
+    border: none;
+    color: whitesmoke;
+    font-size: 16px;
+    background-color: rgb(124, 2, 2);
+    border-radius: 5px;
+    width: 80px;
+}
+
+.btn-dlt:hover {
+    background-color: rgb(69, 1, 1);
+}
+
+.btn-dlt:active {
+    transform: scale(0.95);
+}
