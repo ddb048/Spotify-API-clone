@@ -14,9 +14,6 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    marketable = db.Column(db.Boolean)
-    birthdate = db.Column(db.DateTime, nullable=False)
-    gender = db.Column(db.String(50), nullable=False)
     playlists = db.relationship('Playlist', back_populates='users', cascade="all,delete")
     follows = db.relationship('Follow', back_populates='users', cascade="all,delete")
     likes = db.relationship('Like', back_populates='users', cascade="all,delete")
@@ -88,10 +85,7 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email,
-            'marketable': self.marketable,
-            'birthdate': self.birthdate,
-            'gender': self.gender,
+            'email': self.email
             # 'queue': self.queue
             #  'playlists': [playlist.to_dict() for playlist in self.playlists],
             #  'follows': [follow.to_dict() for follow in self.follows],
