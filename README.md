@@ -52,10 +52,14 @@ Amplify is a clone of Spotify
 Artists they've liked, albums they liked, songs they liked.
 
 # Hosting on Render
+![Cursor_and_Amplify](https://user-images.githubusercontent.com/106298312/205641584-f2fc2607-ecfb-4fb7-9dc6-5272632c4217.png)
+![Cursor_and_Amplify-2](https://user-images.githubusercontent.com/106298312/205641615-2fadcd28-1859-43a8-a7eb-628bd8811a8f.png)
 
 # Spotify Features
 ## Feature 1: Queue
 * logged in users can ADD tracks to the queue, when added, they will appear at the bottom of the queue.
 * logged in users can EDIT the order of the queue by dragging a track to the desired place in line.  The page will rerender and display the updated information
-* logged in users can DELETE tracks from the queue.  When removed, the page will rerender displaying the changes.
+* logged in users can DELETE tracks from the queue.  When removed, the
+ page will rerender displaying the changes.
 * logged in users can VIEW the queue on the queue details page.
+![Cursor_and_Amplify](https://user-images.githubusercontent.com/106298312/205641456-1cc7894a-64f9-44b6-81eb-c53f605a6feb.png)
