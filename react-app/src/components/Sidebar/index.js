@@ -69,7 +69,7 @@ const SideBar = () => {
             <div className="side-bar-container">
 
                 <div className="side-bar-links">
-                    <NavLink className="sidebar-link" to="/" exact={true}>
+                    <NavLink className="sidebar-link" to="/main" exact={true}>
                         <i className="fa fa-home" />
                         Home
                     </NavLink>

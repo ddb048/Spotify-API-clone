@@ -35,7 +35,7 @@ const NavBarTop = ({ loaded }) => {
 
     <div className='NavbarTop-Main'>
       <div className='nav-bar-left'>
-        <NavLink to='/' exact={true} className='logo'>
+        <NavLink to='/main' exact={true} className='logo'>
           <img className='logo-img' src={Main_logo} alt="Main Logo" />
         </NavLink>
 
