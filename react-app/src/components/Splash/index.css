@@ -286,103 +286,30 @@
 
 }
 
-.language-button-div {
-    /* padding-top: 20px; */
-    display: flex;
-    gap: 5px;
-}
 
-.language-button {
-    color: white;
-    /* font-size: 15px; */
-}
 
-.footer-title {
-    /* display: flex;
-    flex-direction: row;
-    align-items: center; */
-    grid-column: span 3;
-    font-family: adelle-sans, sans-serif;
-    color: #5865f2;
-    font-size: 35px;
-    font-weight: bold;
-    text-align: center;
-    /* padding-bottom: 50px; */
-}
 
-.contact-card {
-    /* border: 1px solid; */
-    grid-column: span 2;
-    display: flex;
-    /* flex-direction: column; */
-    align-items: center;
-    gap: 40px;
-    /* justify-content: center; */
-    /* border: 1px solid blue; */
-}
 
-#languages {
-    grid-column: 2/span 1;
-}
 
-#abel {
-    grid-column: 4/span 1;
-    /* border:1px solid pink; */
-    flex-direction: column;
+
+
+
+
+
+
+
+.button-div {
+    padding: 2%;
 
 }
 
-#cindy {
-    /* border:1px solid pink; */
-    grid-column: 6/span 1;
-    flex-direction: column;
-}
-
-#david {
-    /* border:1px solid pink; */
-    grid-column: 8/span 1;
-    flex-direction: column;
-}
-
-#moran {
-    /* border:1px solid pink; */
-    grid-column: 10/span 1;
-    flex-direction: column;
-}
-
-.contact-card-line {
-    border-right: .5 px solid white;
-}
-
-.contact-text {
-    font-size: 20px;
-    font-family: adelle-sans, sans-serif;
-    color: #4650af;
-}
-
-.contact-button {
-    color: white;
-    font-size: 30px;
-
-}
-
-.contact-buttons-div {
-    gap: 10px;
-    display: inline-flex;
-    /* border:1px solid pink; */
-
-}
-
-/* .button-div {
-    padding-bottom: 2%;
-
-} */
 
 .sign-up-button {
     height: 45px;
     width: 100px;
     border-radius: 20px;
     border: none;
+
     background-color: #5865f2;
     color: white;
     transition: background-color .2s ease;
