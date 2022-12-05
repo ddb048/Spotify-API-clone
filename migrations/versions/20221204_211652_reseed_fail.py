@@ -1,8 +1,8 @@
-"""added queue
+"""reseed fail
 
-Revision ID: b707e7a76670
+Revision ID: 9192c251c514
 Revises: 
-Create Date: 2022-12-04 11:32:24.467084
+Create Date: 2022-12-04 21:16:52.004008
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'b707e7a76670'
+revision = '9192c251c514'
 down_revision = None
 branch_labels = None
 depends_on = None

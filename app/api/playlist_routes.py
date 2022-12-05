@@ -134,8 +134,8 @@ def delete_playlist(playlistId):
         db.session.commit()
         return {
             'message': 'Playlist successfully deleted',
-            'statusCode': 302
-        }, 302
+            'statusCode': 200
+        }, 200
     else:
         return {
             'errors': 'playlist not found',
@@ -167,8 +167,8 @@ def delete_track_from_playlist(playlistId, trackId):
         db.session.commit()
         return {
             'message': "Track removed from playlist",
-            'statusCode': 302
-        }, 302
+            'statusCode': 200
+        }, 200
     else:
         return {
             'errors': "Track not found in playlist",

@@ -22,7 +22,7 @@ const AudioBar = () => {
 
     useEffect(() => {
         if (queue.length) {
-            setMp3(queue[0].tracks.source);
+            setMp3(queue[0]?.tracks?.source);
         }
     }, [queue]);
 
@@ -102,14 +102,14 @@ const AudioBar = () => {
                     <div className="song-text">
                         {queue ? (
                             <p id="audio-controls_name">
-                                {queue[0]?.tracks.name}
+                                {queue[0]?.tracks?.name}
                             </p>
                         ) : (
                             <p id="audio-controls_name">Song Title</p>
                         )}
                         {queue ? (
                             <p id="audio-controls_album-title">
-                                {queue[0]?.tracks.album.artist.name}
+                                {queue[0]?.tracks?.album?.artist?.name}
                             </p>
                         ) : (
                             <p id="audio-controls_album-title">Artist</p>

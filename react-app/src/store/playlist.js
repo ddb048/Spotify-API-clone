@@ -162,10 +162,13 @@ export const deletePlaylistTrackThunk = (playlist, playlistTrack) => async dispa
     const response = await fetch(`/api/playlists/playlist_track/${playlist}/${playlistTrack.id}`, {
         method: 'DELETE'
     });
-
+    console.log(response, "response from thunk")
     if (response.ok) {
+
         const playlist_track = await response.json();
-        dispatch(deletePlaylistTrack(playlist_track));
+        console.log(playlist_track, "playlist_track from thunk")
+        console.log(playlistTrack, "playlistTrack from thunk")
+        dispatch(deletePlaylistTrack(playlistTrack.id));
         return playlist_track;
     }
 }
@@ -185,6 +188,7 @@ const playlistReducer = (state = initialState, action) => {
     Object.freeze(state);
     switch (action.type) {
         case GET_PLAYLIST:
+            newState = { ...state }
             newState.playlists = { ...state.playlists, [action.playlist.id]: action.playlist };
             newState.OnePlaylist = { ...action.playlist };
             return newState
@@ -202,7 +206,7 @@ const playlistReducer = (state = initialState, action) => {
             newState = { ...state }
             newState.PlaylistTracks = {}
             action.playlistTracks.forEach(playlistTrack => {
-                newState.PlaylistTracks[idx += 1] = playlistTrack
+                newState.PlaylistTracks[playlistTrack.id] = playlistTrack
             });
             return newState
 
@@ -220,10 +224,12 @@ const playlistReducer = (state = initialState, action) => {
             newState.playlists[action.playlist.id] = { ...newState.playlists[action.playlist.id], ...action.playlist }
 
         case DELETE_PLAYLIST:
+            newState = { ...state }
             delete newState.playlists[action.playlist]
             return newState
 
         case DELETE_PLAYLIST_TRACK:
+            newState = { ...state, PlaylistTracks: { ...state.PlaylistTracks } }
             delete newState.PlaylistTracks[action.playlistTrack];
             return newState
 

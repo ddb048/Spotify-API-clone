@@ -9,6 +9,7 @@ import AudioBar from './components/AudioBar';
 import Main from './components/Main';
 import ArtistDetail from './components/ArtistDetail';
 import AlbumDetail from './components/AlbumDetail';
+import PlaylistDetail from './components/playlistDetail';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import Queue from './components/Queue';
@@ -52,6 +53,9 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute path='/albums/:albumId'>
             <AlbumDetail />
+          </ProtectedRoute>
+          <ProtectedRoute path='/playlists/:playlistId'>
+            <PlaylistDetail />
           </ProtectedRoute>
           <ProtectedRoute path='/queue'  >
             <Queue />
