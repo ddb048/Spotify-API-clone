@@ -7,6 +7,7 @@ import PlaylistCard from '../PlaylistCard';
 import ArtistCard from '../ArtistCard';
 import AlbumCard from '../AlbumCard';
 import SideBar from '../Sidebar';
+import Footer from '../Footer';
 import './index.css'
 
 const Main = () => {
@@ -70,6 +71,22 @@ const Main = () => {
                                     ))}
                                 </div>
                             </div>
+
+
+                            <div className="section-title">
+                                <a href='https://github.com/ddb048'>
+                                    <i className="fab fa-github"></i>
+                                </a>Created by David Burch</div>
+                            <div className="section-div">
+
+                                <div className="tech">
+                                    JavaScript * CSS * React * Redux * Express * Sequelize * PostgreSQL
+                                </div>
+                            </div>
+
+
+
+
                         </div>
 
                     </div>

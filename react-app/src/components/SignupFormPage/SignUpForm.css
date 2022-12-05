@@ -13,6 +13,10 @@
     font-size: large;
 }
 
+.inp {
+    left: 15px;
+}
+
 .input-main {
     display: flex;
     justify-content: flex-start;
@@ -36,6 +40,7 @@
     width: 350px;
     height: 25px;
     border-radius: 10px;
+    margin-left: 15px;
     margin-top: 1px;
 }
 

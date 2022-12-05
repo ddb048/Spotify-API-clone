@@ -1,0 +1,44 @@
+.footer {
+    position: fixed;
+    width: 100%;
+    left: 0px;
+    bottom: 0px;
+    background-color: rgb(30, 29, 29);
+}
+
+.footer-content {
+
+    align-items: center;
+    color: lightgray;
+    display: flex;
+    flex-direction: column;
+    height: 120 px;
+    justify-content: center;
+
+}
+
+.footer-title {
+    padding-top: 5px;
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+    border-bottom: 1px solid lightgray;
+    width: 90%
+}
+
+.icon {
+    padding-top: 1%;
+}
+
+.icon a {
+    color: lightgray;
+    font-size: 20px;
+    text-decoration: none;
+    padding-top: 2%;
+}
+
+.tech {
+    font-size: 12px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
