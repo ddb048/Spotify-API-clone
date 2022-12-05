@@ -31,7 +31,6 @@ export function Modal({ onClose, children }) {
         <div id="modal">
             <div id="modal-background" onClick={onClose} />
             <div className='modal-content'>
-
                 {children}
             </div>
         </div>,

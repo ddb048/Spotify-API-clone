@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { Modal } from "../../context/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory, useParams } from "react-router-dom";
 import { getAllPlaylistsThunk } from "../../store/playlist";
+import CreatePlaylistForm from "../CreatePlaylistModal";
 import './index.css'
 
 
@@ -9,12 +11,13 @@ const SideBar = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const [playlists, setPlaylists] = useState([]);
+    const [showModal, setShowModal] = useState(false);
     const [myPlaylistNumber, setMyPlaylistNumber] = useState(1);
 
     const playlistSelector = useSelector((state) => state.playlists);
     const sessionUser = useSelector((state) => state.session.user);
 
-
+    console.log(showModal, "setShowModal from SideBar")
     let usersPlaylists;
 
 
@@ -70,19 +73,20 @@ const SideBar = () => {
                         <i className="fa fa-home" />
                         Home
                     </NavLink>
-                    <NavLink className="sidebar-link" to="/search" exact={true}>
-                        <i className="fa fa-search" />
-                        Search
-                    </NavLink>
                     <NavLink className="sidebar-link" to="/collection" exact={true}>
                         <i className="fa fa-music" />
-                        Your Library
+                        Your Collection
                     </NavLink>
 
-                    {sessionUser && <div className="sidebar-link" onClick={onSubmit}>
+                    {sessionUser && <div className="sidebar-link" onClick={() => setShowModal(true)}>
                         <i className="fa fa-plus" />
+
                         Create Playlist
                     </div>}
+                    {showModal &&
+                        <Modal onClose={() => setShowModal(false)} >
+                            <CreatePlaylistForm setShowModal={setShowModal} />
+                        </Modal>}
                 </div>
 
                 <div className="side-bar-playlist-list">

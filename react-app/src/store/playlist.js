@@ -83,12 +83,13 @@ export const getAllPlaylistTracksThunk = (playlistId) => async dispatch => {
 
 
 export const createPlaylistThunk = newPlaylist => async dispatch => {
+    console.log(newPlaylist, "newPlaylist from thunk")
     const response = await fetch('/api/playlists', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newPlaylist)
     });
-
+    console.log(response, "response from createPlaylistThunk")
     if (response.ok) {
         const newPlaylist = await response.json();
         dispatch(createPlaylist(newPlaylist));
@@ -97,6 +98,7 @@ export const createPlaylistThunk = newPlaylist => async dispatch => {
     } else if (response.status < 500) {
 
         const data = await response.json();
+        console.log(data, "data from create playlist thunk")
         if (data.errors) {
             return data;
         }
@@ -125,14 +127,17 @@ export const createPlaylistTrackThunk = (playlist, track) => async dispatch => {
 }
 
 export const updatePlaylistThunk = playlist => async dispatch => {
+    console.log(playlist, "playlist from updatePlaylist thunk")
     const response = await fetch(`/api/playlists/${playlist.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(playlist)
     });
-
+    console.log(response, "response from playlist update thunk")
     if (response.ok) {
+
         const playlist = await response.json();
+        console.log(playlist, "playlist from response ok in update thunk")
         dispatch(updatePlaylist(playlist))
         return playlist;
 
@@ -221,7 +226,8 @@ const playlistReducer = (state = initialState, action) => {
             return newState
 
         case UPDATE_PLAYLIST:
-            newState.playlists[action.playlist.id] = { ...newState.playlists[action.playlist.id], ...action.playlist }
+            newState = { ...state }
+            newState.playlists[action.playlist.id] = action.playlist
 
         case DELETE_PLAYLIST:
             newState = { ...state }

@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { Modal } from '../../context/Modal';
 import { useDispatch, useSelector } from 'react-redux';
 import { getOneAlbumThunk } from '../../store/album';
 import { getTracksByAlbumThunk } from '../../store/track';
 import SideBar from '../Sidebar';
 import Record from '../Record';
 import './index.css'
+import UpdatePlaylistForm from '../UpdatePlaylistModal';
 import { emptyQueueThunk, addTracktoQueue, getQueueThunk } from '../../store/queue';
 import { getAllUsersArtistsThunk, getAllUsersTracksThunk } from '../../store/collection';
 import { getAllPlaylistTracksThunk, getOnePlaylistThunk } from '../../store/playlist';
 
 const PlaylistDetail = () => {
+    const [showUpdateModal, setUpdateShowModal] = useState(false);
     const { playlistId } = useParams()
     const [loaded, setLoaded] = useState(false);
     const [showQueueTracksAlert, setShowQueueTracksAlert] = useState(false);
@@ -85,12 +88,19 @@ const PlaylistDetail = () => {
                                     play_circle_filled
                                 </span>
                                 {usersPlaylists.find(playlist => playlist.id === +playlistId) ?
-                                    (<span class="material-symbols-outlined elipsis">
+                                    (<span onClick={() => (setUpdateShowModal(true))} className="material-symbols-outlined elipsis">
                                         more_horiz
                                     </span>)
                                     :
                                     null}
-
+                                {showUpdateModal && (
+                                    <Modal onClose={() => setUpdateShowModal(false)}>
+                                        <UpdatePlaylistForm
+                                            setUpdateShowModal={setUpdateShowModal}
+                                            playlist={playlist}
+                                        />
+                                    </Modal>
+                                )}
                             </div>
 
 

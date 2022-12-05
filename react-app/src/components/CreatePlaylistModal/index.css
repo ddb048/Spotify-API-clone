@@ -1,0 +1,29 @@
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+}
+
+.form-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.inp {
+    display: flex;
+    /* width: auto; */
+    border-radius: 5px;
+}
+
+.subButton {
+    color: whitesmoke;
+    font-size: 15px;
+    background-color: rgb(46, 210, 102);
+    border: none;
+    border-radius: 5px;
+    height: 30px;
+    width: 85px;
+}

@@ -75,8 +75,22 @@ def create_playlist():
     form = PlaylistForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
+        print(""".
+
+
+
+
+
+              'test for hitting route'
+
+
+
+
+
+              .""")
         playlist = Playlist()
         form.populate_obj(playlist)
+        playlist.preview_image = 'https://amplifybuckey.s3.us-west-2.amazonaws.com/Q-cord-logos-1.png'
         playlist.user_id = current_user.id
         db.session.add(playlist)
         db.session.commit()
@@ -98,7 +112,7 @@ def update_playlist(playlistId):
         if form.validate_on_submit():
             form.populate_obj(playlist)
             db.session.commit()
-            return playlist.to_dict(), 201
+            return playlist.to_dict(), 200
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 #SECTION POST a track to a playlist /api/playlists/:playlistId/tracks/:trackId

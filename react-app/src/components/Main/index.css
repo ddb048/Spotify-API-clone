@@ -10,12 +10,13 @@
 .main-page-container {
     /* position: relative; */
     display: flex;
-    height: 85vh;
+    height: 84vh;
     min-width: 200vw;
     overflow: hidden;
     overflow-x: hidden;
     scroll-margin-bottom: none;
     background: rgb(18, 18, 18);
+    bottom: 40px;
 }
 
 .main-selector-container {

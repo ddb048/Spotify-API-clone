@@ -13,6 +13,7 @@ import PlaylistDetail from './components/playlistDetail';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import Queue from './components/Queue';
+import Collection from './components/collection';
 import User from './components/User';
 import { authenticate } from './store/session';
 
@@ -59,6 +60,9 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute path='/queue'  >
             <Queue />
+          </ProtectedRoute>
+          <ProtectedRoute path='/collection'  >
+            <Collection />
           </ProtectedRoute>
           <Route path='/' exact={true} >
             <Main loaded={loaded} />
