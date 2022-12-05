@@ -19,6 +19,7 @@ class Track(db.Model):
     albums = db.relationship('Album', back_populates = 'tracks')
     likes = db.relationship('Like', back_populates = 'tracks', cascade = 'all, delete')
     playlists = db.relationship('Playlist_track', back_populates='tracks', cascade= 'all, delete')
+    queue_tracks = db.relationship('Queue_track', back_populates='tracks', cascade= 'all, delete')
 
     def to_dict(self):
         return {
@@ -31,4 +32,5 @@ class Track(db.Model):
             'album': self.albums.to_dict(),
             'playlists': [playlist.playlist_id for playlist in self.playlists],
             'likes': [like.to_dict() for like in self.likes]
+
         }

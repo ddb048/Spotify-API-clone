@@ -9,12 +9,14 @@ import SideBar from '../Sidebar';
 import Record from '../Record';
 import './index.css'
 import { getOneArtistThunk } from '../../store/artist';
+import { emptyQueueThunk, addTracktoQueue, getQueueThunk } from '../../store/queue';
 import { followArtistThunk, unfollowArtistThunk, getAllUsersArtistsThunk } from '../../store/collection';
 
 const ArtistDetail = () => {
     const { artistId } = useParams()
     const [loaded, setLoaded] = useState(false);
     const [showFollowAlert, setShowFollowAlert] = useState(false);
+    const [showQueueTracksAlert, setShowQueueTracksAlert] = useState(false);
     const [showUnfollowAlert, setShowUnfollowAlert] = useState(false);
     const dispatch = useDispatch()
 
@@ -24,14 +26,29 @@ const ArtistDetail = () => {
     const usersArtists = useSelector((state) => Object.values(state.collection.artists))
     // console.log(usersArtists, "usersArtists")
     const artist = useSelector((state) => state.artists.OneArtist)
-    const albums = useSelector((state) => Object.values(state.albums.ArtistAlbums))
+    let albums = useSelector((state) => state.albums.ArtistAlbums)
+    const queue = useSelector((state) => Object.values(state.queue.queueTracks))
     const artistTracks = useSelector((state) => Object.values(state.tracks.ArtistTracks))
     console.log(artistTracks, "artistTracks from artist Details page")
 
 
+    console.log(albums, "albums from ArtistDetail")
+
+    const handleAddAllTrackstoQueue = async (artistTracks) => {
+        console.log(artistTracks, "artistTracks from inside queue handling")
+
+        await dispatch(emptyQueueThunk());
+        await artistTracks.forEach(track => dispatch(addTracktoQueue(track)))
+        await dispatch(getQueueThunk())
+        await setShowQueueTracksAlert(true)
+
+    }
+
+
+
 
     const handleAddFollow = () => {
-        console.log(artist, "artist from handlefollow")
+        // console.log(artist, "artist from handlefollow")
         dispatch(followArtistThunk(artist))
         setShowFollowAlert(true)
 
@@ -56,6 +73,13 @@ const ArtistDetail = () => {
         }
     }, [showUnfollowAlert]);
 
+    useEffect(() => {
+        if (setShowQueueTracksAlert) {
+            const timeout = setTimeout(() => setShowQueueTracksAlert(false), 1500);
+            return () => clearTimeout(timeout);
+        }
+    }, [showQueueTracksAlert]);
+
     let imgSrc = artist.artist_pic;
 
     useEffect(() => {
@@ -67,7 +91,14 @@ const ArtistDetail = () => {
             await dispatch(getTracksByArtistThunk(artistId))
                 .then(() => setLoaded(true))
         })();
-    }, [dispatch]);
+    }, [dispatch, setShowQueueTracksAlert]);
+
+    if (albums) {
+        albums = Object.values(albums)
+    } else {
+        return null
+    }
+
     const Loading = () => <div>Loading...</div>;
     return (
         <>
@@ -105,7 +136,7 @@ const ArtistDetail = () => {
                                 <span
                                     id="play_button"
                                     className="material-icons"
-                                    onClick={null}
+                                    onClick={() => handleAddAllTrackstoQueue(artistTracks)}
                                 >
                                     play_circle_filled
                                 </span>
@@ -152,6 +183,11 @@ const ArtistDetail = () => {
             {
                 showUnfollowAlert && (
                     <div className='unfollow-alert'>Removed from your collection</div>
+                )
+            }
+            {
+                showQueueTracksAlert && (
+                    <div className='unfollow-alert'>Tracks added to your Queue</div>
                 )
             }
         </>

@@ -15,18 +15,18 @@ const RecordDropMenu = ({ track, usersPlaylists }) => {
     const [showPlaylistAddAlert, setShowPlaylistAddAlert] = useState(false);
     const [showPlaylistRemoveAlert, setShowPlaylistRemoveAlert] = useState(false);
 
-    console.log(usersPlaylists, "usersPlaylists from inside Record dropdown menu")
+    // console.log(usersPlaylists, "usersPlaylists from inside Record dropdown menu")
 
     const usersPlaylistArray = Object.values(usersPlaylists)
 
     const userPlaylistIdSet = new Set(Object.values(usersPlaylists).map(playlist => playlist.id))
-    console.log(userPlaylistIdSet)
+    // console.log(userPlaylistIdSet)
 
     const usersPlaylistsWithTrack = track.playlists.filter(playlist => userPlaylistIdSet.has(+playlist))
-    console.log(usersPlaylistsWithTrack, "array of playlists Ids")
+    // console.log(usersPlaylistsWithTrack, "array of playlists Ids")
 
     const addTracktoPlaylist = (playlist) => {
-        console.log(playlist, "value from addTracktoPlayist menu")
+        // console.log(playlist, "value from addTracktoPlayist menu")
         dispatch(createPlaylistTrackThunk(playlist, track))
 
         setShowPlaylistAddAlert(true)
@@ -35,7 +35,7 @@ const RecordDropMenu = ({ track, usersPlaylists }) => {
     };
 
     const removeTrackFromPlaylist = (playlist) => {
-        console.log(playlist, "playlist from delete track from playlist")
+        // console.log(playlist, "playlist from delete track from playlist")
         dispatch(deletePlaylistTrackThunk(playlist, track))
 
         setShowPlaylistRemoveAlert(true)

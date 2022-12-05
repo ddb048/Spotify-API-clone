@@ -76,7 +76,7 @@ export const getTracksByArtistThunk = (artistId) => async dispatch => {
 
 
 export const getTracksByAlbumThunk = (albumId) => async dispatch => {
-    const response = await fetch(`/api/track/albums/${albumId}`);
+    const response = await fetch(`/api/tracks/albums/${albumId}`);
     if (response.ok) {
         const tracks = await response.json();
         dispatch(loadAlbumTracks(tracks.tracks));
