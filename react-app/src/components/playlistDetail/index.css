@@ -1,0 +1,24 @@
+.buttons {
+    display: flex;
+    flex-direction: row;
+}
+
+.elipsis {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+    color: rgb(98, 98, 98)
+}
+
+.elipsis:hover {
+
+    color: white;
+}
+
+#play_button {
+    justify-content: center;
+    justify-self: center;
+    align-items: center;
+}

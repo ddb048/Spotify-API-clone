@@ -21,7 +21,7 @@ class Artist(db.Model):
         return {
             'id': self.id,
             'name': self.name,
-            'artist pic': self.artist_pic,
+            'artist_pic': self.artist_pic,
             'description': self.description,
             'genre': self.genres.to_dict(),
             # 'albums': [album.to_dict() for album in self.albums],

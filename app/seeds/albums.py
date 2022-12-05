@@ -54,7 +54,7 @@ def seed_albums():
     album8 = Album(
         title='Star Crossed',
         release_date=2021,
-        album_cover='https://amplifybuckey.s3.us-west-2.amazonaws.com/mp3/kacey+Musgraves/golden+hour/Kacey_Musgraves_-_Golden_Hour_-_Golden_Hour__Kacey_Musgraves_album__-_Wikipedia.png',
+        album_cover='https://amplifybuckey.s3.us-west-2.amazonaws.com/mp3/kacey+Musgraves/star+crossed/Kacey_Musgraves_-_Star-Crossed_-_Star-Crossed__album__-_Wikipedia.png',
         genre_id=10,
         artist_id=5)
     # 9
@@ -68,7 +68,7 @@ def seed_albums():
     album10 = Album(
         title='Greatest Hits',
         release_date=2014,
-        album_cover='https://amplifybuckey.s3.us-west-2.amazonaws.com/mp3/kacey+Musgraves/golden+hour/Kacey_Musgraves_-_Golden_Hour_-_Golden_Hour__Kacey_Musgraves_album__-_Wikipedia.png',
+        album_cover='https://amplifybuckey.s3.us-west-2.amazonaws.com/mp3/queen/QUEEN_-_Greatest_Hits.png',
         genre_id=1,
         artist_id=6)
     # 11

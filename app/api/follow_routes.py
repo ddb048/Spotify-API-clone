@@ -89,7 +89,7 @@ def follow_artist(artistId, action):
 
 
 
-#SECTION - GET liked tracks
+#SECTION - GET liked tracks /api/collection/tracks
 @follow_and_likes_routes.route('/tracks')
 @login_required
 def get_liked_tracks():

@@ -1,0 +1,39 @@
+.queue-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-top: 2%;
+    max-width: 1050px;
+}
+
+.queue-title {
+    color: whitesmoke;
+    font-size: 32px;
+}
+
+.queue-button {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+}
+
+.queue-clear {
+    background-color: rgb(18, 18, 18);
+    color: whitesmoke;
+    border-radius: 5px;
+    border: 1px solid rgb(98, 98, 98);
+    width: 130px;
+    height: 30px;
+}
+
+.queue-clear:hover {
+    border: 1px solid white;
+}
+
+.empty-queue {
+    display: flex;
+    justify-content: center;
+    font-size: large;
+    color: rgb(98, 98, 98);
+}

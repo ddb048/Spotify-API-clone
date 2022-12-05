@@ -6,8 +6,8 @@ from app.aws import (
 
 track_routes = Blueprint("tracks", __name__)
 
-# SECTION - Get all tracks /api/tracks/
-@track_routes.route('/')
+# SECTION - Get all tracks /api/tracks
+@track_routes.route('')
 def get_all_tracks():
     tracks = Track.query.all()
     return {'tracks': [track.to_dict() for track in tracks]}
@@ -24,7 +24,7 @@ def get_all_tracks_by_album(albumId):
 
 
 
-# SECTION - Get all tracks by artist /api/tracks/artists/:albumId
+# SECTION - Get all tracks by artist /api/tracks/artists/:artistId
 @track_routes.route('/artists/<int:artistId>')
 def get_all_tracks_by_artist(artistId):
     tracks = Track.query.filter(Track.artist_id == artistId).all()
