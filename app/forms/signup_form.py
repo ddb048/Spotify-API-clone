@@ -22,10 +22,6 @@ def username_exists(form, field):
 
 
 #REVIEW - customize validation for age is possible, but not required here.
-def validate_birthdate(form, field):
-    birthdate = field.data
-    if field.data > datetime.date.today():
-        raise ValidationError("Birthdate cannot be in the future")
 
 
 class SignUpForm(FlaskForm):
@@ -33,7 +29,3 @@ class SignUpForm(FlaskForm):
         'username', validators=[DataRequired(), username_exists])
     email = StringField('email', validators=[DataRequired(), user_exists])
     password = StringField('password', validators=[DataRequired()])
-    birthdate = DateField('birthate', format='%Y-%m-%d', validators=[DataRequired(), validate_birthdate])
-    marketable = BooleanField("marketable", validators=[DataRequired()])
-    gender = SelectField(
-        "gender", choices=["Male", "Female", "Non-binary", "Other", "Prefer not to say"], validators=[DataRequired()])

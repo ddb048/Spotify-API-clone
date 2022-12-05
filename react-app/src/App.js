@@ -17,6 +17,7 @@ import Collection from './components/collection';
 import Splash from './components/Splash';
 import User from './components/User';
 import { authenticate } from './store/session';
+import SignupFormPage from './components/SignupFormPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -44,35 +45,39 @@ function App() {
           <Route path='/login' exact={true}>
             <LoginForm />
           </Route>
-          <Route path='/sign-up' exact={true}>
-            <SignUpForm />
+          <Route path='/signup' exact={true}>
+            <SignupFormPage />
           </Route>
           <Route path='/' exact={true}>
             <Splash />
           </Route>
-          <ProtectedRoute path='/users' exact={true} >
-            <UsersList />
-          </ProtectedRoute>
           <ProtectedRoute path='/artists/:artistId'>
             <ArtistDetail />
+            <AudioBar />
           </ProtectedRoute>
           <ProtectedRoute path='/albums/:albumId'>
             <AlbumDetail />
+            <AudioBar />
           </ProtectedRoute>
           <ProtectedRoute path='/playlists/:playlistId'>
             <PlaylistDetail />
+            <AudioBar />
           </ProtectedRoute>
           <ProtectedRoute path='/queue'  >
             <Queue />
+            <AudioBar />
           </ProtectedRoute>
           <ProtectedRoute path='/collection'  >
             <Collection />
+            <AudioBar />
           </ProtectedRoute>
           <ProtectedRoute path='/main' exact={true} >
             <Main loaded={loaded} />
+            <AudioBar />
           </ProtectedRoute>
         </Switch>
-        <AudioBar />
+
+
       </BrowserRouter>
     </>
   );
