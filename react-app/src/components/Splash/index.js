@@ -9,7 +9,7 @@ function Splash() {
     const history = useHistory();
 
     const signUp = () => {
-        history.push('/sign-up');
+        history.push('/signup');
     };
 
     return (

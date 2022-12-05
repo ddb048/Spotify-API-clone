@@ -13,6 +13,7 @@
     height: 84vh;
     min-width: 200vw;
     overflow: hidden;
+    overflow-y: scroll;
     overflow-x: hidden;
     scroll-margin-bottom: none;
     background: rgb(18, 18, 18);
@@ -57,4 +58,14 @@
 .playlist-card:hover {
     background-color: rgb(38, 38, 38);
 
+}
+
+.footer {
+    height: auto;
+}
+
+.tech {
+    display: flex;
+    justify-content: center;
+    color: rgb (98, 98, 98);
 }
