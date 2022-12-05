@@ -14,6 +14,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import Queue from './components/Queue';
 import Collection from './components/collection';
+import Splash from './components/Splash';
 import User from './components/User';
 import { authenticate } from './store/session';
 
@@ -46,6 +47,9 @@ function App() {
           <Route path='/sign-up' exact={true}>
             <SignUpForm />
           </Route>
+          <Route path='/' exact={true}>
+            <Splash />
+          </Route>
           <ProtectedRoute path='/users' exact={true} >
             <UsersList />
           </ProtectedRoute>
@@ -64,9 +68,9 @@ function App() {
           <ProtectedRoute path='/collection'  >
             <Collection />
           </ProtectedRoute>
-          <Route path='/' exact={true} >
+          <ProtectedRoute path='/main' exact={true} >
             <Main loaded={loaded} />
-          </Route>
+          </ProtectedRoute>
         </Switch>
         <AudioBar />
       </BrowserRouter>

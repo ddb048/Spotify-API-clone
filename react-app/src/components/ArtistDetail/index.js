@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Color from 'color-thief-react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAlbumsByArtistThunk } from '../../store/album';
@@ -106,31 +105,30 @@ const ArtistDetail = () => {
                 (<div className='fullview'>
                     <SideBar />
                     <div className='main-page-container'>
-                        <Color src={imgSrc} crossOrigin="anonymous" format='hex'>
-                            {({ data, loading }) => {
-                                if (loading) return <Loading />
-                                return (
-                                    <div className='detail-header' crossOrigin="anonymous" style={{ backgroundColor: { data } }}>
 
 
 
-                                        <div className='detail_image_container'>
-                                            {data}
-                                            <img className="detail_image"
-                                                src={imgSrc}
+                        <div className='detail-header'>
 
-                                                alt='Artist Img' />
-                                        </div>
-                                        <div className='detail-header-textblock-container'>
-                                            <div className='detail-type'>Artist</div>
-                                            <div className='detail-title'>{artist.name}</div>
-                                            <div className='detail-subtext-container'>
 
-                                            </div>
-                                        </div>
-                                    </div>)
-                            }}
-                        </Color>
+
+                            <div className='detail_image_container'>
+
+                                <img className="detail_image"
+                                    src={imgSrc}
+
+                                    alt='Artist Img' />
+                            </div>
+                            <div className='detail-header-textblock-container'>
+                                <div className='detail-type'>Artist</div>
+                                <div className='detail-title'>{artist.name}</div>
+                                <div className='detail-subtext-container'>
+
+                                </div>
+                            </div>
+                        </div>
+
+
                         <div className='buttons-section'>
                             <div class>
                                 <span
