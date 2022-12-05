@@ -75,3 +75,8 @@ Artists they've liked, albums they liked, songs they liked.
 ![Cursor_and_Amplify](https://user-images.githubusercontent.com/106298312/205641456-1cc7894a-64f9-44b6-81eb-c53f605a6feb.png)
 ![Cursor_and_Amplify](https://user-images.githubusercontent.com/106298312/205646407-b69464aa-f723-45cb-92d2-a2d76022f820.png)
 
+
+# Future Plans
+
+* I plan to add a search feature to better allow the traversal of the application as well as refactoring for speed in postGreSQL
+
