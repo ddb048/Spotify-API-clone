@@ -28,7 +28,6 @@ const Main = () => {
     }, [dispatch]);
 
     if (artists) {
-        console.log("artists", artists)
     }
 
     return (

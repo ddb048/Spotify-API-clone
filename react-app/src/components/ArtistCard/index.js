@@ -5,7 +5,6 @@ import './index.css'
 
 
 const ArtistCard = ({ artist }) => {
-    console.log(artist, "artist from card")
     return (
         <Link to={`/artists/${artist.id}`}>
             <div className="image-parent">
