@@ -39,9 +39,7 @@ const UpdatePlaylistForm = ({ setUpdateShowModal, playlist }) => {
             name,
             description,
         }
-        console.log(newPlaylist, "newPlaylist from updatePlaylist modal")
         const data = await dispatch(updatePlaylistThunk(newPlaylist));
-        console.log(data, "data from create playlist modal")
         if (data.errors) {
             setError(data.errors);
         } else {

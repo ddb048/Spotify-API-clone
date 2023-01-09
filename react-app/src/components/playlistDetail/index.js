@@ -22,7 +22,6 @@ const PlaylistDetail = () => {
     // console.log(playlistId, "playlistid from playlist detail")
 
     const usersPlaylists = useSelector((state) => Object.values(state.collection.playlists))
-    console.log(usersPlaylists, "usersPlaylists from playlistDetail")
     const playlist = useSelector((state) => state.playlists.OnePlaylist)
     // console.log(playlist, "playlist from playlist Detail")
     let playlistTracks = useSelector((state) => state.playlists.PlaylistTracks)

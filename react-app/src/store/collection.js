@@ -80,10 +80,8 @@ export const getAllUsersArtistsThunk = () => async dispatch => {
 
 export const followArtistThunk = (artist) => async dispatch => {
     const response = await fetch(`/api/collection/artists/${artist.id}/follow`)
-    console.log(response, "response from follow thunk")
     if (response.ok) {
         const follow = await response.json();
-        console.log(artist, "artist from follow thunk after response.ok")
         dispatch(followArtist(artist))
         return follow
     }

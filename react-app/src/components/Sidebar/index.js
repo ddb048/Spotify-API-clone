@@ -17,7 +17,6 @@ const SideBar = () => {
     const playlistSelector = useSelector((state) => state.playlists);
     const sessionUser = useSelector((state) => state.session.user);
 
-    console.log(showModal, "setShowModal from SideBar")
     let usersPlaylists;
 
 
