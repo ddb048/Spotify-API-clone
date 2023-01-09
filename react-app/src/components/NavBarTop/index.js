@@ -9,7 +9,6 @@ import './index.css'
 
 const NavBarTop = ({ loaded }) => {
   const sessionUser = useSelector(state => state.session.user);
-  console.log(sessionUser, "session user from NavBarTop")
 
   const dispatch = useDispatch()
   const history = useHistory()
