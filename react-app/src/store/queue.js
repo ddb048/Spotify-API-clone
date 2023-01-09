@@ -63,6 +63,7 @@ export const addTracktoQueue = (track) => async dispatch => {
         const newQueueTrack = await response.json();
         dispatch(addTrack(track))
         return newQueueTrack;
+
     } else if (response.status < 500) {
         const data = await response.json();
         if (data.errors) {
@@ -75,7 +76,7 @@ export const deleteTrackFromQueue = (track) => async dispatch => {
     const response = await fetch(`/api/queue/tracks/${track.id}`, {
         method: 'DELETE'
     });
-    console.log(response, "response from delete track from queue thunk")
+
     if (response.ok) {
         const queueTrack = await response.json();
         dispatch(removeTrack(track));
@@ -87,7 +88,7 @@ export const emptyQueueThunk = () => async dispatch => {
     const response = await fetch('/api/queue/tracks', {
         method: 'DELETE'
     });
-    console.log(response, 'response from inside empty queue')
+
     if (response.ok) {
         const queue = await response.json();
         dispatch(removeQueue());
@@ -126,7 +127,6 @@ export default function queueReducer(state = initialState, action) {
 
         case REMOVE_QUEUE:
             newState = { ...state }
-            console.log(newState.queueTracks, "queueTracks from within case reducer")
             newState.queueTracks = action.queue
             return newState
 
